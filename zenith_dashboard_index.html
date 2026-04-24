@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Zenith Performance — Dashboard</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: #0a0a0a;
+    min-height: 100vh;
+    color: #f5f0e8;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* TOP BAR */
+  .topbar {
+    border-bottom: 1px solid #1f1f1f;
+    padding: 1.2rem 2.5rem;
+    display: flex;
+    align-items: flex-end;
+    gap: 1.2rem;
+  }
+  .topbar-brand {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 42px;
+    letter-spacing: 4px;
+    color: #e8411a;
+    line-height: 1;
+  }
+  .topbar-sub {
+    font-size: 11px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: #555;
+    padding-bottom: 6px;
+  }
+
+  /* HERO */
+  .hero {
+    padding: 3rem 2.5rem 2rem;
+    border-bottom: 1px solid #1a1a1a;
+  }
+  .hero-label {
+    font-size: 10px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: #e8411a;
+    margin-bottom: .6rem;
+  }
+  .hero-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 56px;
+    letter-spacing: 3px;
+    line-height: 1;
+    color: #f5f0e8;
+  }
+  .hero-title span { color: #333; }
+  .hero-desc {
+    font-size: 13px;
+    color: #666;
+    margin-top: .8rem;
+    letter-spacing: .3px;
+    max-width: 480px;
+    line-height: 1.7;
+  }
+
+  /* GRID */
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1px;
+    background: #1a1a1a;
+    flex: 1;
+  }
+
+  .card {
+    background: #0d0d0d;
+    padding: 2rem 2.5rem;
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    flex-direction: column;
+    gap: .75rem;
+    transition: background .2s;
+    position: relative;
+    overflow: hidden;
+  }
+  .card:hover { background: #111; }
+  .card:hover .card-arrow { color: #e8411a; transform: translateX(4px); }
+  .card.disabled { cursor: default; }
+  .card.disabled:hover { background: #0d0d0d; }
+
+  .card-accent {
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+  }
+
+  .card-tag {
+    font-size: 9px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #444;
+  }
+  .card.live .card-tag { color: #e8411a; }
+
+  .card-icon {
+    font-size: 28px;
+    line-height: 1;
+    margin-bottom: .25rem;
+  }
+
+  .card-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 32px;
+    letter-spacing: 2px;
+    color: #f5f0e8;
+    line-height: 1;
+  }
+  .card.disabled .card-title { color: #2a2a2a; }
+
+  .card-desc {
+    font-size: 12px;
+    color: #555;
+    line-height: 1.65;
+    max-width: 340px;
+  }
+  .card.disabled .card-desc { color: #272727; }
+
+  .card-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: auto;
+    padding-top: 1rem;
+    border-top: 1px solid #1a1a1a;
+  }
+  .card.disabled .card-footer { border-top-color: #141414; }
+
+  .card-status {
+    font-size: 10px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 3px 10px;
+    border-radius: 3px;
+  }
+  .status-live {
+    background: #0f2010;
+    color: #3B6D11;
+    border: 1px solid #1a3a1a;
+  }
+  .status-coming {
+    background: #141414;
+    color: #333;
+    border: 1px solid #1f1f1f;
+  }
+
+  .card-arrow {
+    font-size: 18px;
+    color: #2a2a2a;
+    transition: color .2s, transform .2s;
+  }
+  .card.live .card-arrow { color: #333; }
+
+  /* BOTTOM BAR */
+  .bottombar {
+    border-top: 1px solid #1a1a1a;
+    padding: .75rem 2.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .bottombar-left {
+    font-size: 10px;
+    color: #2a2a2a;
+    letter-spacing: 1px;
+  }
+  .bottombar-right {
+    display: flex;
+    gap: 1.5rem;
+  }
+  .rhythm-item {
+    font-size: 9px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: #2a2a2a;
+  }
+  .rhythm-item span { color: #e8411a; margin-right: 4px; }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="topbar-brand">Zenith</div>
+  <div class="topbar-sub">Performance Operating System</div>
+</div>
+
+<div class="hero">
+  <div class="hero-label">Command Center</div>
+  <div class="hero-title">Your Week.<br><span>Your Rules.</span></div>
+  <div class="hero-desc">Everything you need to run Zenith Performance — schedule, tracking, sales, and systems — in one place.</div>
+</div>
+
+<div class="grid">
+
+  <!-- WEEKLY SCHEDULE — LIVE -->
+  <a href="zenith-weekly-schedule.html" class="card live">
+    <div class="card-accent" style="background:#e8411a"></div>
+    <div class="card-tag">Live</div>
+    <div class="card-title">Weekly Schedule</div>
+    <div class="card-desc">Your full 7-day operating system — deep work, gym blocks, client calls, KPA open/close, DM outreach, content engine, and weekly recap.</div>
+    <div class="card-footer">
+      <span class="card-status status-live">Active</span>
+      <span class="card-arrow">→</span>
+    </div>
+  </a>
+
+  <!-- KPA TRACKER — LIVE -->
+  <a href="zenith-kpa.html" class="card live">
+    <div class="card-accent" style="background:#BA7517"></div>
+    <div class="card-tag">Live</div>
+    <div class="card-title">KPA Tracker</div>
+    <div class="card-desc">Open and close your day with intention. Track your key performance actions, daily notes, and hold yourself accountable to what actually moves the needle.</div>
+    <div class="card-footer">
+      <span class="card-status status-live">Active</span>
+      <span class="card-arrow">→</span>
+    </div>
+  </a>
+
+  <!-- DAILY KPI SCORECARD — COMING SOON -->
+  <div class="card disabled">
+    <div class="card-accent" style="background:#1a1a1a"></div>
+    <div class="card-tag">Coming Soon</div>
+    <div class="card-title" style="color:#222">Daily KPI Scorecard</div>
+    <div class="card-desc">Know if you're winning or slacking. Track leads, closes, DMs sent, content posted, and revenue daily — so nothing slips through the cracks.</div>
+    <div class="card-footer">
+      <span class="card-status status-coming">In Progress</span>
+      <span class="card-arrow">→</span>
+    </div>
+  </div>
+
+  <!-- SALES FOLLOW-UP SYSTEM — COMING SOON -->
+  <div class="card disabled">
+    <div class="card-accent" style="background:#1a1a1a"></div>
+    <div class="card-tag">Coming Soon</div>
+    <div class="card-title" style="color:#222">Sales Follow-Up System</div>
+    <div class="card-desc">Copy-paste scripts for every stage of the follow-up sequence. No guessing what to say — just open, run the script, and close more people on Fridays.</div>
+    <div class="card-footer">
+      <span class="card-status status-coming">In Progress</span>
+      <span class="card-arrow">→</span>
+    </div>
+  </div>
+
+</div>
+
+<div class="bottombar">
+  <div class="bottombar-left">Zenith Performance &mdash; gfoust5</div>
+  <div class="bottombar-right">
+    <div class="rhythm-item"><span>Sun</span>Deliver</div>
+    <div class="rhythm-item"><span>Mon</span>Plan</div>
+    <div class="rhythm-item"><span>Tue</span>Serve</div>
+    <div class="rhythm-item"><span>Wed</span>Create</div>
+    <div class="rhythm-item"><span>Thu</span>Build</div>
+    <div class="rhythm-item"><span>Fri</span>Sell</div>
+    <div class="rhythm-item"><span>Sat</span>Expand</div>
+  </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Zenith Performance — Weekly Schedule</title>
+<link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --black: #000000;
+    --white: #FFFFFF;
+    --amber: #E7D19D;
+    --gold: #AE9465;
+    --blue: #30586E;
+    --gray: #5A5554;
+    --dark1: #0d0d0d;
+    --dark2: #141414;
+    --dark3: #1c1c1c;
+    --dark4: #2a2a2a;
+  }
+  body {
+    font-family: 'Josefin Sans', sans-serif;
+    background: #111;
+    padding: 1.5rem 1.5rem 3rem;
+    color: var(--white);
+  }
+  .page-label {
+    text-align: center;
+    margin-bottom: 1.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+  }
+  .page-label a {
+    font-size: 9px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gold);
+    text-decoration: none;
+  }
+  .page-label a:hover { color: var(--amber); }
+  .page-label span { color: var(--dark4); font-size: 10px; }
+
+  .cal {
+    max-width: 1400px;
+    margin: 0 auto;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 8px 60px rgba(0,0,0,.6);
+  }
+
+  /* HEADER */
+  .header {
+    background: var(--black);
+    padding: 1.4rem 2rem 1.2rem;
+    border-bottom: 1px solid var(--dark3);
+  }
+  .header-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+  }
+  .header-left {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+  .header-logo {
+    height: 36px;
+    filter: invert(1);
+  }
+  .header-divider {
+    width: 1px;
+    height: 30px;
+    background: var(--dark3);
+  }
+  .header-subtitle {
+    font-size: 9px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--gray);
+  }
+  .hours-badge {
+    background: var(--blue);
+    color: var(--amber);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    padding: 5px 12px;
+    border-radius: 3px;
+    text-align: right;
+    line-height: 1.7;
+    text-transform: uppercase;
+  }
+  .legend {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    padding-top: .8rem;
+    border-top: 1px solid var(--dark3);
+  }
+  .leg-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 10px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--gray);
+  }
+  .leg-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 1px;
+    flex-shrink: 0;
+  }
+
+  /* GRID */
+  .days-grid {
+    display: grid;
+    grid-template-columns: repeat(7, minmax(0, 1fr));
+    border-left: 1px solid var(--dark3);
+    border-bottom: 1px solid var(--dark3);
+    background: var(--dark1);
+  }
+  .day-col {
+    border-right: 1px solid var(--dark3);
+    border-top: 1px solid var(--dark3);
+    display: flex;
+    flex-direction: column;
+  }
+  .day-header {
+    padding: .6rem .5rem .5rem;
+    background: var(--black);
+    border-bottom: 1px solid var(--dark3);
+  }
+  .day-name {
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--white);
+    line-height: 1;
+  }
+  .day-label {
+    font-size: 8px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-top: 3px;
+  }
+  .day-theme {
+    font-size: 8px;
+    letter-spacing: 1px;
+    color: var(--gray);
+    margin-top: 2px;
+    font-weight: 300;
+  }
+
+  /* BLOCKS */
+  .blocks { display: flex; flex-direction: column; flex: 1; }
+  .block {
+    padding: .45rem .5rem;
+    border-bottom: 1px solid rgba(255,255,255,.04);
+    position: relative;
+  }
+  .block:last-child { border-bottom: none; flex: 1; }
+  .time-tag {
+    font-size: 8px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--gray);
+    margin-bottom: 2px;
+  }
+  .block-title {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: .5px;
+    color: var(--white);
+    line-height: 1.3;
+    margin-bottom: 1px;
+  }
+  .task {
+    font-size: 9px;
+    font-weight: 300;
+    letter-spacing: .3px;
+    color: var(--gray);
+    line-height: 1.5;
+    padding-left: 7px;
+    border-left: 1.5px solid var(--dark4);
+    margin-top: 2px;
+  }
+  .flag { font-size: 8px; font-weight: 600; margin-top: 3px; letter-spacing: .5px; text-transform: uppercase; }
+  .flag-gold { color: var(--gold); }
+  .flag-blue { color: var(--blue); }
+  .flag-note { color: var(--dark4); font-weight: 300; font-style: italic; text-transform: none; letter-spacing: 0; }
+
+  /* Block backgrounds */
+  .bd-kpa   { background: rgba(174,148,101,.06); }
+  .bd-gym   { background: rgba(48,88,110,.07); }
+  .bd-dm    { background: rgba(48,88,110,.05); }
+  .bd-deep  { background: rgba(231,209,157,.04); }
+  .bd-calls { background: rgba(48,88,110,.08); }
+  .bd-exec  { background: rgba(90,85,84,.07); }
+  .bd-off   { background: rgba(255,255,255,.02); }
+  .bd-recap { background: rgba(174,148,101,.08); }
+  .bd-post  { background: rgba(48,88,110,.06); }
+  .bd-buf   { background: rgba(90,85,84,.04); }
+
+  /* Accent strips */
+  .accent-strip { position: absolute; left: 0; top: 0; bottom: 0; width: 2px; }
+  .s-kpa   { background: var(--gold); }
+  .s-gym   { background: var(--blue); }
+  .s-dm    { background: #30586E; }
+  .s-deep  { background: var(--amber); }
+  .s-calls { background: var(--blue); }
+  .s-exec  { background: var(--gray); }
+  .s-off   { background: var(--dark4); }
+  .s-recap { background: var(--gold); }
+  .s-post  { background: var(--blue); }
+  .s-buf   { background: var(--gray); }
+
+  /* RHYTHM */
+  .rhythm {
+    background: var(--black);
+    padding: .9rem 2rem;
+    display: flex;
+    gap: .5rem;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: center;
+    border-top: 1px solid var(--dark3);
+  }
+  .r-arrow { color: var(--gold); font-size: 12px; }
+  .r-day { font-size: 13px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--white); }
+  .r-verb { font-size: 8px; font-weight: 300; letter-spacing: 2px; text-transform: uppercase; color: var(--gray); display: block; }
+
+  /* NOTE BAR */
+  .note-bar {
+    background: var(--black);
+    color: var(--dark4);
+    font-size: 9px;
+    font-weight: 300;
+    letter-spacing: 1px;
+    padding: .5rem 2rem;
+    text-align: center;
+    border-top: 1px solid var(--dark3);
+  }
+
+  @media print {
+    body { background: white; padding: .5rem; }
+    .cal { box-shadow: none; }
+  }
+</style>
+</head>
+<body>
+
+<div class="page-label">
+  <a href="index.html">← Dashboard</a>
+  <span>|</span>
+  <a href="zenith-kpa.html">KPA Tracker</a>
+</div>
+
+<div class="cal">
+  <div class="header">
+    <div class="header-top">
+      <div class="header-left">
+        <img class="header-logo" src="data:image/png;base64,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AjAAAEURgAEAKIoADABAUQRgAACKIgADAFAUARgAgKIIwAAAFEUABgCgKAIwAABFEYABACiKAAwAQFEEYAAAiiIAAwBQFAEYAICiCMAAABRFAAYAoCgCMAAARRGAAQAoigAMAEBRBGAAAIoiAAMAUBQBGACAogjAAAAURQAGAKAoAjAAAEURgAEAKIoADABAUQRgAACKIgADAFAUARgAgKIIwAAAFEUABgCgKAIwAABFEYABACiKAAwAQFEEYAAAiiIAAwBQFAEYAICiCMAAABRFAAYAoCgCMAAARRGAAQAoigAMAEBRBGAAAIoiAAMAUBQBGACAogjAAAAURQAGAKAoAjAAAEURgAEAKIoADABAUQRgAACKIgADAFAUARgAgKIIwAAAFEUABgCgKAIwAABFEYABACiKAAwAQFEEYAAAiiIAAwBQFAEYAICiCMAAABRFAAYAoCgCMAAARRGAAQAoigAMAEBRBGAAAIoiAAMAUBQBGACAogjAAAAURQAGAKAoAjAAAEURgAEAKIoADABAUQRgAACKIgADAFAUARgAgKIIwAAAFEUABgCgKAIwAABFEYABACiKAAwAQFEEYAAAiiIAAwBQFAEYAICiCMAAABRFAAYAoCgCMAAARRGAAQAoigAMAEBRBGAAAIoiAAMAUBQBGACAogjAAAAURQAGAKAoAjAAAEURgAEAKIoADABAUQRgAACKIgADAFAUARgAgKIIwAAAFEUABgCgKAIwAABFEYABACiKAAwAQFEEYAAAiiIAAwBQFAEYAICiCMAAABRFAAYAoCgCMAAARRGAAQAoigAMAEBRBGAAAIoiAAMAUBQBGACAogjAAAAURQAGAKAoAjAAAEURgAEAKIoADABAUQRgAACKIgADAFAUARgAgKIIwAAAFEUABgCgKAIwAABFEYABACiKAAwAQFEEYAAAiiIAAwBQFAEYAICiCMAAABRFAAYAoCgCMAAARRGAAQAoigAMAEBRBGAAAIoiAAMAUBQBGACAogjAAAAURQAGAKAoAjAAAEURgAEAKIoADABAUQRgAACKIgADAFAUARgAgKIIwAAAFEUABgCgKAIwAABFEYABACiKAAwAQFEEYAAAiiIAAwBQFAEYAICiCMAAABRFAAYAoCgCMAAARRGAAQAoigAMAEBRBGAAAIoiAAMAUBQBGACAogjAAAAURQAGAKAoAjAAAEURgAEAKIoADABAUQRgAACKIgADAFAUARgAgKIIwAAAFEUABgCgKAIwAABFEYABACiKAAwAQFEEYAAAiiIAAwBQFAEYAICiCMAAABRFAAYAoCgCMAAARRGAAQAoigAMAEBRBGAAAIoiAAMAUBQBGACAogjAAAAURQAGAKAoAjAAAEURgAEAKIoADABAUQRgAACKIgADAFAUARgAgKIIwAAAFEUABgCgKAIwAABFEYABACiKAAwAQFEEYAAAiiIAAwBQFAEYAICiCMAAABRFAAYAoCgCMAAARRGAAQAoigAMAEBRBGAAAIoiAAMAUBQBGACAogjAAAAURQAGAKAoAjAAAEURgAEAKIoADABAUQRgAACKIgADAFAUARgAgKIIwAAAFEUABgCgKAIwAABFEYABACiKAAwAQFEEYAAAiiIAAwBQFAEYAICiCMAAABRFAAYAoCgCMAAARRGAAQAoigAMAEBRBGAAAIoiAAMAUBQBGACAogjAAAAURQAGAKAoAjAAAEURgAEAKIoADABAUQRgAACKIgADAFAUARgA4ECTlK4nKZ3lroP9CMAAAO9zO0npMncR7E4ABgA43G1EfIiIf0xSWuoGD4MADABwuGXr409Rd4MvMtXCjgRgAIADrapq+exTHyLin81s8McMJbEDARgA4H3utnzup6i7weddF8PbBGAAgPe5f+HzP0TEvycpzbsrhV0IwAAA73P7xu//2hyQMxLREwIwAMD7/LnDn/kUEfdGIvpBAAYAeJ+3OsBrH6IeiZidsBZ2IAADAHTrj0lKi9xFlEwABgB4hy2r0HbxeZLSrbngPARgAIA8fgxzwVkIwAAA+XyIiKXb47olAAMA5LW+PW6Wu5BSCMAAAP3wxySlq9xFlEAABgDoj19siDg9ARgAoF8+C8GnJQADAPTP50lKC2vSTkMABgDop89Rb4gQgo9MAAYAeIdJStMTfvkfQwg+OgEYAKDffoyI69xFjIkADADwPmcdPMYnB+OORwAGAHifs44ex3aIIxGAAQDe57zDxxKCj0AABgB4n7OOH++za5PfRwAGAHifHzM85h+TlC4yPO4oCMAAAAeapNTl+MNzi8yPP1gCMADA4aYZH/tDRFzbEbw/ARgA4HC5O7A/hB3BexOAAQAON81dQNQ7gq9yFzEkAjAAwAEmKZ1F3YHtg18citud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" alt="Zenith Performance">
+        <div class="header-divider"></div>
+        <div class="header-subtitle">Weekly Schedule &mdash; v3</div>
+      </div>
+      <div class="hours-badge">Mon–Fri &nbsp;7AM–5PM<br>Sat / Sun &nbsp;Half Day</div>
+    </div>
+    <div class="legend">
+      <div class="leg-item"><div class="leg-dot" style="background:var(--gold)"></div>KPA</div>
+      <div class="leg-item"><div class="leg-dot" style="background:var(--blue)"></div>Gym</div>
+      <div class="leg-item"><div class="leg-dot" style="background:#30586E"></div>DM Outreach</div>
+      <div class="leg-item"><div class="leg-dot" style="background:var(--amber)"></div>Deep Work</div>
+      <div class="leg-item"><div class="leg-dot" style="background:var(--blue)"></div>Calls / Clients</div>
+      <div class="leg-item"><div class="leg-dot" style="background:var(--gray)"></div>Execution / Admin</div>
+      <div class="leg-item"><div class="leg-dot" style="background:var(--gold)"></div>Post / Schedule</div>
+      <div class="leg-item"><div class="leg-dot" style="background:var(--gold)"></div>Weekly Recap</div>
+      <div class="leg-item"><div class="leg-dot" style="background:var(--dark4)"></div>Buffer / Off</div>
+    </div>
+  </div>
+
+  <div class="days-grid">
+
+    <!-- SUNDAY -->
+    <div class="day-col">
+      <div class="day-header">
+        <div class="day-name">Sun</div>
+        <div class="day-label">Check-In</div>
+        <div class="day-theme">Deliver</div>
+      </div>
+      <div class="blocks">
+        <div class="block bd-kpa"><div class="accent-strip s-kpa"></div>
+          <div class="time-tag">8:00 AM</div>
+          <div class="block-title">Open KPA</div>
+          <div class="task">Set intention, review targets</div>
+        </div>
+        <div class="block bd-dm"><div class="accent-strip s-dm"></div>
+          <div class="time-tag">8:30 AM</div>
+          <div class="block-title">DM Outreach</div>
+          <div class="task">30 min — engage, prospect</div>
+        </div>
+        <div class="block bd-deep"><div class="accent-strip s-deep"></div>
+          <div class="time-tag">9:00–11:00</div>
+          <div class="block-title">Check-In Review</div>
+          <div class="task">Review check-ins</div>
+          <div class="task">Send feedback</div>
+          <div class="task">Adjust nutrition / training</div>
+          <div class="flag flag-gold">No calls — hard stop</div>
+        </div>
+        <div class="block bd-kpa"><div class="accent-strip s-kpa"></div>
+          <div class="time-tag">by 11:00</div>
+          <div class="block-title">Close KPA</div>
+          <div class="task">Log wins, notes</div>
+        </div>
+        <div class="block bd-off"><div class="accent-strip s-off"></div>
+          <div class="time-tag">After 11</div>
+          <div class="block-title">Hard Stop</div>
+          <div class="task">Recover, reset, live</div>
+          <div class="flag flag-note">Check-in cutoff: Sat 5PM</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- MONDAY -->
+    <div class="day-col">
+      <div class="day-header">
+        <div class="day-name">Mon</div>
+        <div class="day-label">CEO Day</div>
+        <div class="day-theme">Plan</div>
+      </div>
+      <div class="blocks">
+        <div class="block bd-kpa"><div class="accent-strip s-kpa"></div>
+          <div class="time-tag">7:00 AM</div>
+          <div class="block-title">Open KPA</div>
+          <div class="task">Set intention, review targets</div>
+        </div>
+        <div class="block bd-dm"><div class="accent-strip s-dm"></div>
+          <div class="time-tag">7:30 AM</div>
+          <div class="block-title">DM Outreach</div>
+          <div class="task">30 min — engage, prospect</div>
+        </div>
+        <div class="block bd-deep"><div class="accent-strip s-deep"></div>
+          <div class="time-tag">8:00–11:00</div>
+          <div class="block-title">Content Planning</div>
+          <div class="task">Plan 1–2 wks of content</div>
+          <div class="task">Outline posts &amp; hooks</div>
+        </div>
+        <div class="block bd-gym"><div class="accent-strip s-gym"></div>
+          <div class="time-tag">11:00–1:00</div>
+          <div class="block-title">Gym</div>
+          <div class="task">2 hr training block</div>
+          <div class="flag flag-note">Shifts to 5PM+ as volume grows</div>
+        </div>
+        <div class="block bd-calls"><div class="accent-strip s-calls"></div>
+          <div class="time-tag">1:00–2:00</div>
+          <div class="block-title">Applications</div>
+          <div class="task">Review applications</div>
+          <div class="task">Schedule sales calls</div>
+          <div class="flag flag-gold">No calls</div>
+        </div>
+        <div class="block bd-exec"><div class="accent-strip s-exec"></div>
+          <div class="time-tag">2:00–4:30</div>
+          <div class="block-title">Control Tower</div>
+          <div class="task">CRM cleanup</div>
+          <div class="task">Set weekly KPIs</div>
+        </div>
+        <div class="block bd-kpa"><div class="accent-strip s-kpa"></div>
+          <div class="time-tag">4:30–5:00</div>
+          <div class="block-title">Close KPA</div>
+          <div class="task">Daily notes recap</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TUESDAY -->
+    <div class="day-col">
+      <div class="day-header">
+        <div class="day-name">Tue</div>
+        <div class="day-label">Client Day</div>
+        <div class="day-theme">Serve</div>
+      </div>
+      <div class="blocks">
+        <div class="block bd-kpa"><div class="accent-strip s-kpa"></div>
+          <div class="time-tag">7:00 AM</div>
+          <div class="block-title">Open KPA</div>
+          <div class="task">Set intention, review targets</div>
+        </div>
+        <div class="block bd-dm"><div class="accent-strip s-dm"></div>
+          <div class="time-tag">7:30 AM</div>
+          <div class="block-title">DM Outreach</div>
+          <div class="task">30 min — engage, prospect</div>
+        </div>
+        <div class="block bd-deep"><div class="accent-strip s-deep"></div>
+          <div class="time-tag">8:00–11:00</div>
+          <div class="block-title">Client Experience</div>
+          <div class="task">Programming tweaks</div>
+          <div class="task">Review client data</div>
+        </div>
+        <div class="block bd-gym"><div class="accent-strip s-gym"></div>
+          <div class="time-tag">11:00–1:00</div>
+          <div class="block-title">Gym</div>
+          <div class="task">2 hr training block</div>
+          <div class="flag flag-note">Shifts to 5PM+ as volume grows</div>
+        </div>
+        <div class="block bd-calls"><div class="accent-strip s-calls"></div>
+          <div class="time-tag">1:00–4:30</div>
+          <div class="block-title">Client Calls + Retention</div>
+          <div class="task">Live client sessions</div>
+          <div class="task">PR posts, community</div>
+        </div>
+        <div class="block bd-kpa"><div class="accent-strip s-kpa"></div>
+          <div class="time-tag">4:30–5:00</div>
+          <div class="block-title">Close KPA</div>
+          <div class="task">Daily notes recap</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- WEDNESDAY -->
+    <div class="day-col">
+      <div class="day-header">
+        <div class="day-name">Wed</div>
+        <div class="day-label">Content Day</div>
+        <div class="day-theme">Create</div>
+      </div>
+      <div class="blocks">
+        <div class="block bd-kpa"><div class="accent-strip s-kpa"></div>
+          <div class="time-tag">7:00 AM</div>
+          <div class="block-title">Open KPA</div>
+          <div class="task">Set intention, review targets</div>
+        </div>
+        <div class="block bd-dm"><div class="accent-strip s-dm"></div>
+          <div class="time-tag">7:30 AM</div>
+          <div class="block-title">DM Outreach</div>
+          <div class="task">30 min — engage, prospect</div>
+        </div>
+        <div class="block bd-deep"><div class="accent-strip s-deep"></div>
+          <div class="time-tag">8:00–11:00</div>
+          <div class="block-title">Batch Film</div>
+          <div class="task">Record ALL content today</div>
+        </div>
+        <div class="block bd-calls"><div class="accent-strip s-calls"></div>
+          <div class="time-tag">11:00–2:00</div>
+          <div class="block-title">Optional Calls</div>
+          <div class="task">Limit — protect morning</div>
+        </div>
+        <div class="block bd-exec"><div class="accent-strip s-exec"></div>
+          <div class="time-tag">2:00–4:00</div>
+          <div class="block-title">Edit &amp; Organize</div>
+          <div class="task">Edit content, sort clips</div>
+          <div class="task">Start drafts</div>
+        </div>
+        <div class="block bd-post"><div class="accent-strip s-post"></div>
+          <div class="time-tag">4:00–4:30</div>
+          <div class="block-title">Schedule Posts</div>
+          <div class="task">Queue week's content</div>
+        </div>
+        <div class="block bd-kpa"><div class="accent-strip s-kpa"></div>
+          <div class="time-tag">4:30–5:00</div>
+          <div class="block-title">Close KPA</div>
+          <div class="task">Daily notes recap</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- THURSDAY -->
+    <div class="day-col">
+      <div class="day-header">
+        <div class="day-name">Thu</div>
+        <div class="day-label">Program Day</div>
+        <div class="day-theme">Build</div>
+      </div>
+      <div class="blocks">
+        <div class="block bd-kpa"><div class="accent-strip s-kpa"></div>
+          <div class="time-tag">7:00 AM</div>
+          <div class="block-title">Open KPA</div>
+          <div class="task">Set intention, review targets</div>
+        </div>
+        <div class="block bd-dm"><div class="accent-strip s-dm"></div>
+          <div class="time-tag">7:30 AM</div>
+          <div class="block-title">DM Outreach</div>
+          <div class="task">30 min — engage, prospect</div>
+        </div>
+        <div class="block bd-deep"><div class="accent-strip s-deep"></div>
+          <div class="time-tag">8:00–11:00</div>
+          <div class="block-title">Build Programs</div>
+          <div class="task">Build / update client programs</div>
+          <div class="task">Deep dive adjustments</div>
+        </div>
+        <div class="block bd-gym"><div class="accent-strip s-gym"></div>
+          <div class="time-tag">11:00–1:00</div>
+          <div class="block-title">Gym</div>
+          <div class="task">2 hr training block</div>
+          <div class="flag flag-note">Shifts to 5PM+ as volume grows</div>
+        </div>
+        <div class="block bd-buf"><div class="accent-strip s-buf"></div>
+          <div class="time-tag">1:00–2:00</div>
+          <div class="block-title">Buffer Block</div>
+          <div class="task">Overflow, catch-up, breathe</div>
+        </div>
+        <div class="block bd-calls"><div class="accent-strip s-calls"></div>
+          <div class="time-tag">2:00–4:30</div>
+          <div class="block-title">Client Calls + Upload</div>
+          <div class="task">Form reviews</div>
+          <div class="task">Finish + upload to platforms</div>
+        </div>
+        <div class="block bd-kpa"><div class="accent-strip s-kpa"></div>
+          <div class="time-tag">4:30–5:00</div>
+          <div class="block-title">Close KPA</div>
+          <div class="task">Daily notes recap</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- FRIDAY -->
+    <div class="day-col">
+      <div class="day-header">
+        <div class="day-name">Fri</div>
+        <div class="day-label">Sales Day</div>
+        <div class="day-theme">Sell</div>
+      </div>
+      <div class="blocks">
+        <div class="block bd-kpa"><div class="accent-strip s-kpa"></div>
+          <div class="time-tag">7:00 AM</div>
+          <div class="block-title">Open KPA</div>
+          <div class="task">Set intention, review targets</div>
+        </div>
+        <div class="block bd-dm"><div class="accent-strip s-dm"></div>
+          <div class="time-tag">7:30 AM</div>
+          <div class="block-title">DM Outreach</div>
+          <div class="task">30 min — engage, prospect</div>
+        </div>
+        <div class="block bd-deep"><div class="accent-strip s-deep"></div>
+          <div class="time-tag">8:00–11:00</div>
+          <div class="block-title">Lead Follow-Ups</div>
+          <div class="task">Non-negotiable</div>
+          <div class="flag flag-gold">No follow-ups = no money</div>
+        </div>
+        <div class="block bd-calls"><div class="accent-strip s-calls"></div>
+          <div class="time-tag">11:00–2:00</div>
+          <div class="block-title">Sales Calls</div>
+          <div class="task">Close, close, close</div>
+        </div>
+        <div class="block bd-exec"><div class="accent-strip s-exec"></div>
+          <div class="time-tag">2:00–4:00</div>
+          <div class="block-title">Finance Review</div>
+          <div class="task">Track revenue / expenses</div>
+          <div class="task">Review leads, closes, content</div>
+        </div>
+        <div class="block bd-recap"><div class="accent-strip s-recap"></div>
+          <div class="time-tag">4:00–4:30</div>
+          <div class="block-title">Weekly Recap</div>
+          <div class="task">Review daily notes</div>
+          <div class="task">What worked / what didn't</div>
+          <div class="task">Carry-forwards to Monday</div>
+        </div>
+        <div class="block bd-kpa"><div class="accent-strip s-kpa"></div>
+          <div class="time-tag">4:30–5:00</div>
+          <div class="block-title">Close KPA</div>
+          <div class="task">Log wins, shut it down</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SATURDAY -->
+    <div class="day-col">
+      <div class="day-header">
+        <div class="day-name">Sat</div>
+        <div class="day-label">Community</div>
+        <div class="day-theme">Expand / Live</div>
+      </div>
+      <div class="blocks">
+        <div class="block bd-kpa"><div class="accent-strip s-kpa"></div>
+          <div class="time-tag">Morning</div>
+          <div class="block-title">Open KPA</div>
+          <div class="task">Set intention</div>
+        </div>
+        <div class="block bd-dm"><div class="accent-strip s-dm"></div>
+          <div class="time-tag">After KPA</div>
+          <div class="block-title">DM Outreach</div>
+          <div class="task">30 min — engage, prospect</div>
+        </div>
+        <div class="block bd-gym"><div class="accent-strip s-gym"></div>
+          <div class="time-tag">Mid-Morning</div>
+          <div class="block-title">Gym</div>
+          <div class="task">3 hr training block</div>
+        </div>
+        <div class="block bd-calls"><div class="accent-strip s-calls"></div>
+          <div class="time-tag">Option A</div>
+          <div class="block-title">Work Mode</div>
+          <div class="task">Meets, events, networking</div>
+          <div class="task">Group calls / Q&amp;A</div>
+        </div>
+        <div class="block bd-off"><div class="accent-strip s-off"></div>
+          <div class="time-tag">Option B</div>
+          <div class="block-title">Full Off</div>
+          <div class="task">Fully unplug w/ Tay</div>
+        </div>
+        <div class="block bd-exec"><div class="accent-strip s-exec"></div>
+          <div class="time-tag">by 5:00 PM</div>
+          <div class="block-title">Check-In Cutoff</div>
+          <div class="task">Clients submit by 5PM</div>
+          <div class="flag flag-note">After Aug: no Roosters</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="rhythm">
+    <div style="display:flex;align-items:center;gap:.3rem"><span class="r-day">Sun</span>&nbsp;<span class="r-verb">Deliver</span></div>
+    <span class="r-arrow">→</span>
+    <div style="display:flex;align-items:center;gap:.3rem"><span class="r-day">Mon</span>&nbsp;<span class="r-verb">Plan</span></div>
+    <span class="r-arrow">→</span>
+    <div style="display:flex;align-items:center;gap:.3rem"><span class="r-day">Tue</span>&nbsp;<span class="r-verb">Serve</span></div>
+    <span class="r-arrow">→</span>
+    <div style="display:flex;align-items:center;gap:.3rem"><span class="r-day">Wed</span>&nbsp;<span class="r-verb">Create</span></div>
+    <span class="r-arrow">→</span>
+    <div style="display:flex;align-items:center;gap:.3rem"><span class="r-day">Thu</span>&nbsp;<span class="r-verb">Build</span></div>
+    <span class="r-arrow">→</span>
+    <div style="display:flex;align-items:center;gap:.3rem"><span class="r-day">Fri</span>&nbsp;<span class="r-verb">Sell</span></div>
+    <span class="r-arrow">→</span>
+    <div style="display:flex;align-items:center;gap:.3rem"><span class="r-day">Sat</span>&nbsp;<span class="r-verb">Expand / Live</span></div>
+  </div>
+
+  <div class="note-bar">Gym: Mon, Tue, Thu 11–1PM (2 hrs) &nbsp;|&nbsp; Sat: 3 hr block &nbsp;|&nbsp; KPA + DM anchors every morning &nbsp;|&nbsp; Client check-in cutoff: Sat 5PM &nbsp;|&nbsp; Gym shifts to 5PM+ as client volume grows</div>
+
+</div>
+</body>
+</html>

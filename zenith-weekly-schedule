@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Zenith Performance — Weekly Operating System</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: #f0ede6;
+    min-height: 100vh;
+    padding: 2rem 1.5rem 3rem;
+    color: #1a1a1a;
+  }
+
+  .page-title {
+    text-align: center;
+    margin-bottom: 1.5rem;
+  }
+  .page-title h1 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 14px;
+    letter-spacing: 5px;
+    color: #888;
+    text-transform: uppercase;
+  }
+
+  .cal {
+    max-width: 1400px;
+    margin: 0 auto;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 8px 40px rgba(0,0,0,0.18);
+  }
+
+  /* HEADER */
+  .header {
+    background: #0a0a0a;
+    color: #f5f0e8;
+    padding: 1.5rem 2rem 1.2rem;
+  }
+  .header-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 1rem;
+  }
+  .brand {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 36px;
+    letter-spacing: 3px;
+    color: #e8411a;
+    line-height: 1;
+  }
+  .subtitle {
+    font-size: 11px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: #d4c9b0;
+    margin-top: 4px;
+  }
+  .hours-badge {
+    background: #e8411a;
+    color: #fff;
+    font-size: 11px;
+    font-weight: 500;
+    padding: 6px 12px;
+    border-radius: 5px;
+    text-align: right;
+    line-height: 1.7;
+  }
+  .legend {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    border-top: 1px solid #1f1f1f;
+    padding-top: .9rem;
+  }
+  .leg-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 11px;
+    color: #c5bba5;
+    letter-spacing: .3px;
+  }
+  .leg-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 2px;
+    flex-shrink: 0;
+  }
+
+  /* GRID */
+  .days-grid {
+    display: grid;
+    grid-template-columns: repeat(7, minmax(0, 1fr));
+    border-left: 1px solid #d0cdc7;
+    border-bottom: 1px solid #d0cdc7;
+  }
+  .day-col {
+    border-right: 1px solid #d0cdc7;
+    border-top: 1px solid #d0cdc7;
+    display: flex;
+    flex-direction: column;
+    background: #faf9f6;
+  }
+
+  /* DAY HEADER */
+  .day-header {
+    padding: .65rem .6rem .55rem;
+    background: #1a1a1a;
+    border-bottom: 1px solid #2e2e2e;
+  }
+  .day-name {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 18px;
+    letter-spacing: 1.5px;
+    color: #f5f0e8;
+    line-height: 1;
+  }
+  .day-label {
+    font-size: 9px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #e8411a;
+    margin-top: 3px;
+  }
+  .day-theme {
+    font-size: 9px;
+    color: #666;
+    margin-top: 3px;
+    font-style: italic;
+  }
+
+  /* BLOCKS */
+  .blocks { display: flex; flex-direction: column; flex: 1; }
+  .block {
+    padding: .5rem .55rem;
+    border-bottom: 1px solid rgba(0,0,0,.07);
+    position: relative;
+    transition: filter .15s;
+  }
+  .block:last-child { border-bottom: none; flex: 1; }
+  .block:hover { filter: brightness(.97); }
+
+  .time-tag {
+    font-size: 9px;
+    letter-spacing: .8px;
+    color: #999;
+    text-transform: uppercase;
+    margin-bottom: 3px;
+  }
+  .block-title {
+    font-size: 11px;
+    font-weight: 500;
+    color: #111;
+    line-height: 1.35;
+    margin-bottom: 2px;
+  }
+  .task {
+    font-size: 10px;
+    color: #555;
+    line-height: 1.5;
+    padding-left: 7px;
+    border-left: 2px solid rgba(0,0,0,.1);
+    margin-top: 3px;
+  }
+  .flag {
+    font-size: 9px;
+    font-weight: 500;
+    margin-top: 4px;
+    letter-spacing: .4px;
+  }
+  .flag-red { color: #c0392b; }
+  .flag-note { color: #999; font-style: italic; }
+
+  /* Block backgrounds */
+  .bd-kpa   { background: #fef9f0; }
+  .bd-gym   { background: #f0f7f0; }
+  .bd-dm    { background: #f0f4fc; }
+  .bd-deep  { background: #fafaf7; }
+  .bd-calls { background: #fdf9f5; }
+  .bd-exec  { background: #f9f7f4; }
+  .bd-off   { background: #f5f5f5; }
+  .bd-recap { background: #f5f0fa; }
+  .bd-post  { background: #f0f8fb; }
+  .bd-buf   { background: #f7f7f7; }
+
+  /* Accent strips */
+  .accent-strip {
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 3px;
+  }
+  .s-kpa   { background: #BA7517; }
+  .s-gym   { background: #3B6D11; }
+  .s-dm    { background: #185FA5; }
+  .s-deep  { background: #e8411a; }
+  .s-calls { background: #5B7FA6; }
+  .s-exec  { background: #6A8F6A; }
+  .s-off   { background: #aaa; }
+  .s-recap { background: #7F77DD; }
+  .s-post  { background: #1D9E75; }
+  .s-buf   { background: #B4B2A9; }
+
+  /* RHYTHM BAR */
+  .rhythm {
+    background: #0a0a0a;
+    color: #f5f0e8;
+    padding: .9rem 2rem;
+    display: flex;
+    gap: .5rem;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .r-item { display: flex; align-items: center; gap: .3rem; }
+  .r-arrow { color: #e8411a; font-size: 14px; }
+  .r-day {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 15px;
+    letter-spacing: 1px;
+  }
+  .r-verb { font-size: 9px; color: #aaa; display: block; }
+
+  /* NOTE BAR */
+  .note-bar {
+    background: #141414;
+    color: #c5bba5;
+    font-size: 10px;
+    padding: .6rem 2rem;
+    text-align: center;
+    letter-spacing: .5px;
+    border-top: 1px solid #252525;
+  }
+
+  /* PRINT */
+  @media print {
+    body { background: white; padding: .5rem; }
+    .cal { box-shadow: none; }
+    .block:hover { filter: none; }
+  }
+</style>
+</head>
+<body>
+
+<div class="page-title">
+  <h1>Zenith Performance &mdash; Weekly Operating System</h1>
+</div>
+
+<div class="cal">
+
+  <!-- HEADER -->
+  <div class="header">
+    <div class="header-top">
+      <div>
+        <div class="brand">Zenith Performance</div>
+        <div class="subtitle">Weekly Operating System &mdash; v3</div>
+      </div>
+      <div class="hours-badge">Mon–Fri &nbsp;7AM–5PM<br>Sat / Sun &nbsp;Half Day</div>
+    </div>
+    <div class="legend">
+      <div class="leg-item"><div class="leg-dot" style="background:#BA7517"></div>KPA (open/close)</div>
+      <div class="leg-item"><div class="leg-dot" style="background:#3B6D11"></div>Gym</div>
+      <div class="leg-item"><div class="leg-dot" style="background:#185FA5"></div>DM Outreach</div>
+      <div class="leg-item"><div class="leg-dot" style="background:#e8411a"></div>Deep Work</div>
+      <div class="leg-item"><div class="leg-dot" style="background:#5B7FA6"></div>Calls / Clients</div>
+      <div class="leg-item"><div class="leg-dot" style="background:#6A8F6A"></div>Execution / Admin</div>
+      <div class="leg-item"><div class="leg-dot" style="background:#1D9E75"></div>Post / Schedule</div>
+      <div class="leg-item"><div class="leg-dot" style="background:#7F77DD"></div>Weekly Recap</div>
+      <div class="leg-item"><div class="leg-dot" style="background:#B4B2A9"></div>Buffer / Off</div>
+    </div>
+  </div>
+
+  <!-- DAYS GRID -->
+  <div class="days-grid">
+
+    <!-- SUNDAY -->
+    <div class="day-col">
+      <div class="day-header">
+        <div class="day-name">Sun</div>
+        <div class="day-label">Check-In Day</div>
+        <div class="day-theme">Deliver</div>
+      </div>
+      <div class="blocks">
+        <div class="block bd-kpa"><div class="accent-strip s-kpa"></div>
+          <div class="time-tag">8:00 AM</div>
+          <div class="block-title">Open KPA</div>
+          <div class="task">Set intention, review targets</div>
+        </div>
+        <div class="block bd-dm"><div class="accent-strip s-dm"></div>
+          <div class="time-tag">8:30 AM</div>
+          <div class="block-title">DM Outreach</div>
+          <div class="task">30 min — engage, prospect</div>
+        </div>
+        <div class="block bd-deep"><div class="accent-strip s-deep"></div>
+          <div class="time-tag">9:00–11:00</div>
+          <div class="block-title">Check-In Review</div>
+          <div class="task">Review check-ins</div>
+          <div class="task">Send feedback</div>
+          <div class="task">Adjust nutrition / training</div>
+          <div class="flag flag-red">NO CALLS — hard stop</div>
+        </div>
+        <div class="block bd-kpa"><div class="accent-strip s-kpa"></div>
+          <div class="time-tag">by 11:00</div>
+          <div class="block-title">Close KPA</div>
+          <div class="task">Log wins, notes</div>
+        </div>
+        <div class="block bd-off"><div class="accent-strip s-off"></div>
+          <div class="time-tag">After 11</div>
+          <div class="block-title">Hard Stop</div>
+          <div class="task">Recover, reset, live</div>
+          <div class="flag flag-note">Check-in cutoff: Sat 5PM</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- MONDAY -->
+    <div class="day-col">
+      <div class="day-header">
+        <div class="day-name">Mon</div>
+        <div class="day-label">CEO Day</div>
+        <div class="day-theme">Plan</div>
+      </div>
+      <div class="blocks">
+        <div class="block bd-kpa"><div class="accent-strip s-kpa"></div>
+          <div class="time-tag">7:00 AM</div>
+          <div class="block-title">Open KPA</div>
+          <div class="task">Set intention, review targets</div>
+        </div>
+        <div class="block bd-dm"><div class="accent-strip s-dm"></div>
+          <div class="time-tag">7:30 AM</div>
+          <div class="block-title">DM Outreach</div>
+          <div class="task">30 min — engage, prospect</div>
+        </div>
+        <div class="block bd-deep"><div class="accent-strip s-deep"></div>
+          <div class="time-tag">8:00–11:00</div>
+          <div class="block-title">Content Planning</div>
+          <div class="task">Plan 1–2 wks of content</div>
+          <div class="task">Outline posts &amp; hooks</div>
+        </div>
+        <div class="block bd-gym"><div class="accent-strip s-gym"></div>
+          <div class="time-tag">11:00–1:00</div>
+          <div class="block-title">Gym</div>
+          <div class="task">2 hr training block</div>
+          <div class="flag flag-note">Shifts to 5PM+ as client volume grows</div>
+        </div>
+        <div class="block bd-calls"><div class="accent-strip s-calls"></div>
+          <div class="time-tag">1:00–2:00</div>
+          <div class="block-title">Applications</div>
+          <div class="task">Review applications</div>
+          <div class="task">Schedule sales calls</div>
+          <div class="flag flag-red">NO CALLS</div>
+        </div>
+        <div class="block bd-exec"><div class="accent-strip s-exec"></div>
+          <div class="time-tag">2:00–4:30</div>
+          <div class="block-title">Control Tower</div>
+          <div class="task">CRM cleanup</div>
+          <div class="task">Set weekly KPIs</div>
+        </div>
+        <div class="block bd-kpa"><div class="accent-strip s-kpa"></div>
+          <div class="time-tag">4:30–5:00</div>
+          <div class="block-title">Close KPA</div>
+          <div class="task">Daily notes recap</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TUESDAY -->
+    <div class="day-col">
+      <div class="day-header">
+        <div class="day-name">Tue</div>
+        <div class="day-label">Client Day</div>
+        <div class="day-theme">Serve</div>
+      </div>
+      <div class="blocks">
+        <div class="block bd-kpa"><div class="accent-strip s-kpa"></div>
+          <div class="time-tag">7:00 AM</div>
+          <div class="block-title">Open KPA</div>
+          <div class="task">Set intention, review targets</div>
+        </div>
+        <div class="block bd-dm"><div class="accent-strip s-dm"></div>
+          <div class="time-tag">7:30 AM</div>
+          <div class="block-title">DM Outreach</div>
+          <div class="task">30 min — engage, prospect</div>
+        </div>
+        <div class="block bd-deep"><div class="accent-strip s-deep"></div>
+          <div class="time-tag">8:00–11:00</div>
+          <div class="block-title">Client Experience</div>
+          <div class="task">Programming tweaks</div>
+          <div class="task">Review client data</div>
+        </div>
+        <div class="block bd-gym"><div class="accent-strip s-gym"></div>
+          <div class="time-tag">11:00–1:00</div>
+          <div class="block-title">Gym</div>
+          <div class="task">2 hr training block</div>
+          <div class="flag flag-note">Shifts to 5PM+ as client volume grows</div>
+        </div>
+        <div class="block bd-calls"><div class="accent-strip s-calls"></div>
+          <div class="time-tag">1:00–4:30</div>
+          <div class="block-title">Client Calls + Retention</div>
+          <div class="task">Live client sessions</div>
+          <div class="task">PR posts, community engagement</div>
+        </div>
+        <div class="block bd-kpa"><div class="accent-strip s-kpa"></div>
+          <div class="time-tag">4:30–5:00</div>
+          <div class="block-title">Close KPA</div>
+          <div class="task">Daily notes recap</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- WEDNESDAY -->
+    <div class="day-col">
+      <div class="day-header">
+        <div class="day-name">Wed</div>
+        <div class="day-label">Content Day</div>
+        <div class="day-theme">Create</div>
+      </div>
+      <div class="blocks">
+        <div class="block bd-kpa"><div class="accent-strip s-kpa"></div>
+          <div class="time-tag">7:00 AM</div>
+          <div class="block-title">Open KPA</div>
+          <div class="task">Set intention, review targets</div>
+        </div>
+        <div class="block bd-dm"><div class="accent-strip s-dm"></div>
+          <div class="time-tag">7:30 AM</div>
+          <div class="block-title">DM Outreach</div>
+          <div class="task">30 min — engage, prospect</div>
+        </div>
+        <div class="block bd-deep"><div class="accent-strip s-deep"></div>
+          <div class="time-tag">8:00–11:00</div>
+          <div class="block-title">Batch Film</div>
+          <div class="task">Record ALL content today</div>
+        </div>
+        <div class="block bd-calls"><div class="accent-strip s-calls"></div>
+          <div class="time-tag">11:00–2:00</div>
+          <div class="block-title">Optional Calls</div>
+          <div class="task">Limit — protect the morning</div>
+        </div>
+        <div class="block bd-exec"><div class="accent-strip s-exec"></div>
+          <div class="time-tag">2:00–4:00</div>
+          <div class="block-title">Edit &amp; Organize</div>
+          <div class="task">Edit content, sort clips</div>
+          <div class="task">Start drafts</div>
+        </div>
+        <div class="block bd-post"><div class="accent-strip s-post"></div>
+          <div class="time-tag">4:00–4:30</div>
+          <div class="block-title">Schedule Posts</div>
+          <div class="task">Queue week's content</div>
+        </div>
+        <div class="block bd-kpa"><div class="accent-strip s-kpa"></div>
+          <div class="time-tag">4:30–5:00</div>
+          <div class="block-title">Close KPA</div>
+          <div class="task">Daily notes recap</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- THURSDAY -->
+    <div class="day-col">
+      <div class="day-header">
+        <div class="day-name">Thu</div>
+        <div class="day-label">Program Day</div>
+        <div class="day-theme">Build</div>
+      </div>
+      <div class="blocks">
+        <div class="block bd-kpa"><div class="accent-strip s-kpa"></div>
+          <div class="time-tag">7:00 AM</div>
+          <div class="block-title">Open KPA</div>
+          <div class="task">Set intention, review targets</div>
+        </div>
+        <div class="block bd-dm"><div class="accent-strip s-dm"></div>
+          <div class="time-tag">7:30 AM</div>
+          <div class="block-title">DM Outreach</div>
+          <div class="task">30 min — engage, prospect</div>
+        </div>
+        <div class="block bd-deep"><div class="accent-strip s-deep"></div>
+          <div class="time-tag">8:00–11:00</div>
+          <div class="block-title">Build Programs</div>
+          <div class="task">Build / update client programs</div>
+          <div class="task">Deep dive adjustments</div>
+        </div>
+        <div class="block bd-gym"><div class="accent-strip s-gym"></div>
+          <div class="time-tag">11:00–1:00</div>
+          <div class="block-title">Gym</div>
+          <div class="task">2 hr training block</div>
+          <div class="flag flag-note">Shifts to 5PM+ as client volume grows</div>
+        </div>
+        <div class="block bd-buf"><div class="accent-strip s-buf"></div>
+          <div class="time-tag">1:00–2:00</div>
+          <div class="block-title">Buffer Block</div>
+          <div class="task">Overflow, catch-up, breathe</div>
+        </div>
+        <div class="block bd-calls"><div class="accent-strip s-calls"></div>
+          <div class="time-tag">2:00–4:30</div>
+          <div class="block-title">Client Calls + Upload</div>
+          <div class="task">Form reviews</div>
+          <div class="task">Finish + upload to platforms</div>
+        </div>
+        <div class="block bd-kpa"><div class="accent-strip s-kpa"></div>
+          <div class="time-tag">4:30–5:00</div>
+          <div class="block-title">Close KPA</div>
+          <div class="task">Daily notes recap</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- FRIDAY -->
+    <div class="day-col">
+      <div class="day-header">
+        <div class="day-name">Fri</div>
+        <div class="day-label">Sales Day</div>
+        <div class="day-theme">Sell</div>
+      </div>
+      <div class="blocks">
+        <div class="block bd-kpa"><div class="accent-strip s-kpa"></div>
+          <div class="time-tag">7:00 AM</div>
+          <div class="block-title">Open KPA</div>
+          <div class="task">Set intention, review targets</div>
+        </div>
+        <div class="block bd-dm"><div class="accent-strip s-dm"></div>
+          <div class="time-tag">7:30 AM</div>
+          <div class="block-title">DM Outreach</div>
+          <div class="task">30 min — engage, prospect</div>
+        </div>
+        <div class="block bd-deep"><div class="accent-strip s-deep"></div>
+          <div class="time-tag">8:00–11:00</div>
+          <div class="block-title">Lead Follow-Ups</div>
+          <div class="task">Non-negotiable</div>
+          <div class="flag flag-red">NO FOLLOW-UPS = NO MONEY</div>
+        </div>
+        <div class="block bd-calls"><div class="accent-strip s-calls"></div>
+          <div class="time-tag">11:00–2:00</div>
+          <div class="block-title">Sales Calls</div>
+          <div class="task">Close, close, close</div>
+        </div>
+        <div class="block bd-exec"><div class="accent-strip s-exec"></div>
+          <div class="time-tag">2:00–4:00</div>
+          <div class="block-title">Finance Review</div>
+          <div class="task">Track revenue / expenses</div>
+          <div class="task">Review leads, closes, content</div>
+        </div>
+        <div class="block bd-recap"><div class="accent-strip s-recap"></div>
+          <div class="time-tag">4:00–4:30</div>
+          <div class="block-title">Weekly Recap</div>
+          <div class="task">Review daily notes</div>
+          <div class="task">What worked / what didn't</div>
+          <div class="task">Carry-forwards to Monday</div>
+        </div>
+        <div class="block bd-kpa"><div class="accent-strip s-kpa"></div>
+          <div class="time-tag">4:30–5:00</div>
+          <div class="block-title">Close KPA</div>
+          <div class="task">Log wins, shut it down</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SATURDAY -->
+    <div class="day-col">
+      <div class="day-header">
+        <div class="day-name">Sat</div>
+        <div class="day-label">Community</div>
+        <div class="day-theme">Expand / Live</div>
+      </div>
+      <div class="blocks">
+        <div class="block bd-kpa"><div class="accent-strip s-kpa"></div>
+          <div class="time-tag">Morning</div>
+          <div class="block-title">Open KPA</div>
+          <div class="task">Set intention</div>
+        </div>
+        <div class="block bd-dm"><div class="accent-strip s-dm"></div>
+          <div class="time-tag">After KPA</div>
+          <div class="block-title">DM Outreach</div>
+          <div class="task">30 min — engage, prospect</div>
+        </div>
+        <div class="block bd-gym"><div class="accent-strip s-gym"></div>
+          <div class="time-tag">Mid-Morning</div>
+          <div class="block-title">Gym</div>
+          <div class="task">3 hr training block</div>
+        </div>
+        <div class="block bd-calls"><div class="accent-strip s-calls"></div>
+          <div class="time-tag">Option A</div>
+          <div class="block-title">Work Mode</div>
+          <div class="task">Meets, events, networking</div>
+          <div class="task">Group calls / Q&amp;A</div>
+        </div>
+        <div class="block bd-off"><div class="accent-strip s-off"></div>
+          <div class="time-tag">Option B</div>
+          <div class="block-title">Full Off</div>
+          <div class="task">Fully unplug w/ Tay</div>
+        </div>
+        <div class="block bd-exec"><div class="accent-strip s-exec"></div>
+          <div class="time-tag">by 5:00 PM</div>
+          <div class="block-title">Check-In Cutoff</div>
+          <div class="task">Clients submit by 5PM</div>
+          <div class="flag flag-note">After Aug: no Roosters</div>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- end days-grid -->
+
+  <!-- RHYTHM BAR -->
+  <div class="rhythm">
+    <div class="r-item"><span class="r-day">Sun</span>&nbsp;<span class="r-verb">Deliver</span></div>
+    <span class="r-arrow">→</span>
+    <div class="r-item"><span class="r-day">Mon</span>&nbsp;<span class="r-verb">Plan</span></div>
+    <span class="r-arrow">→</span>
+    <div class="r-item"><span class="r-day">Tue</span>&nbsp;<span class="r-verb">Serve</span></div>
+    <span class="r-arrow">→</span>
+    <div class="r-item"><span class="r-day">Wed</span>&nbsp;<span class="r-verb">Create</span></div>
+    <span class="r-arrow">→</span>
+    <div class="r-item"><span class="r-day">Thu</span>&nbsp;<span class="r-verb">Build</span></div>
+    <span class="r-arrow">→</span>
+    <div class="r-item"><span class="r-day">Fri</span>&nbsp;<span class="r-verb">Sell</span></div>
+    <span class="r-arrow">→</span>
+    <div class="r-item"><span class="r-day">Sat</span>&nbsp;<span class="r-verb">Expand / Live</span></div>
+  </div>
+
+  <!-- NOTE BAR -->
+  <div class="note-bar">
+    Gym: Mon, Tue, Thu 11–1PM (2 hrs) &nbsp;|&nbsp; Sat: 3 hr block &nbsp;|&nbsp; KPA + DM anchors every morning &nbsp;|&nbsp; Client check-in cutoff: Sat 5PM &nbsp;|&nbsp; Gym shifts to 5PM+ as client volume grows
+  </div>
+
+</div><!-- end .cal -->
+
+</body>
+</html>

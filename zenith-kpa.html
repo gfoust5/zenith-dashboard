@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Zenith Performance — Daily KPA System</title>
+<link rel="icon" type="image/png" href="data:image/png;base64,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">
+<link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,300;0,400;0,600;0,700;1,300&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --black:   #000000;
+    --white:   #FFFFFF;
+    --amber:   #E7D19D;
+    --gold:    #AE9465;
+    --blue:    #30586E;
+    --gray:    #5A5554;
+    --bg:      #080808;
+    --surface: #0e0e0e;
+    --card:    #131313;
+    --card2:   #181818;
+    --border:  rgba(174,148,101,0.1);
+    --border2: rgba(255,255,255,0.06);
+    --muted:   rgba(255,255,255,0.38);
+    --gold-dim: rgba(174,148,101,0.12);
+    --blue-dim: rgba(48,88,110,0.14);
+    --gray-dim: rgba(90,85,84,0.14);
+  }
+
+  body {
+    background: var(--bg);
+    color: var(--white);
+    font-family: 'Josefin Sans', sans-serif;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  .container {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 50px 24px 100px;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* NAV */
+  .nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 48px;
+  }
+  .nav-logo {
+    height: 32px;
+    
+    opacity: .85;
+  }
+  .nav-links {
+    display: flex;
+    gap: 1.5rem;
+  }
+  .nav-links a {
+    font-size: 9px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gold);
+    text-decoration: none;
+    opacity: .7;
+    transition: opacity .2s;
+  }
+  .nav-links a:hover { opacity: 1; }
+
+  /* HEADER */
+  .header {
+    text-align: center;
+    margin-bottom: 56px;
+    animation: fadeUp 0.6s ease both;
+  }
+  .header-label {
+    font-size: 10px;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 16px;
+    display: block;
+  }
+  h1 {
+    font-size: clamp(44px, 9vw, 72px);
+    font-weight: 700;
+    letter-spacing: 6px;
+    text-transform: uppercase;
+    line-height: .95;
+    color: var(--white);
+    margin-bottom: 6px;
+  }
+  h1 span { color: var(--gold); }
+  .header-sub {
+    font-size: 12px;
+    font-weight: 300;
+    letter-spacing: 2px;
+    color: var(--muted);
+    margin-top: 14px;
+    line-height: 1.8;
+  }
+  .header-rule {
+    width: 40px;
+    height: 1px;
+    background: var(--gold);
+    margin: 20px auto 0;
+    opacity: .5;
+  }
+
+  /* SECTION */
+  .section {
+    margin-bottom: 40px;
+    animation: fadeUp 0.6s ease both;
+  }
+  .section:nth-child(2) { animation-delay: .1s; }
+  .section:nth-child(3) { animation-delay: .2s; }
+  .section:nth-child(4) { animation-delay: .3s; }
+
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 14px;
+    padding-bottom: 14px;
+    border-bottom: 1px solid var(--border2);
+  }
+  .section-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 15px;
+    flex-shrink: 0;
+  }
+  .icon-open  { background: var(--gold-dim); }
+  .icon-close { background: var(--blue-dim); }
+  .icon-week  { background: var(--gray-dim); }
+
+  .section-title {
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+  }
+  .title-open  { color: var(--amber); }
+  .title-close { color: #7aadca; }
+  .title-week  { color: var(--gold); }
+
+  .section-meta {
+    margin-left: auto;
+    font-size: 9px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  /* KPA CARDS */
+  .kpa-list {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .kpa-card {
+    background: var(--card);
+    border: 1px solid var(--border2);
+    border-radius: 8px;
+    padding: 14px 16px;
+    cursor: pointer;
+    transition: all 0.22s ease;
+    position: relative;
+    overflow: hidden;
+  }
+  .kpa-card::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 2px;
+    opacity: 0;
+    transition: opacity 0.22s ease;
+  }
+  .open-card::before  { background: var(--amber); }
+  .close-card::before { background: #7aadca; }
+  .week-card::before  { background: var(--gold); }
+
+  .kpa-card:hover {
+    background: var(--card2);
+    border-color: var(--border);
+    transform: translateX(3px);
+  }
+  .kpa-card:hover::before { opacity: 1; }
+  .kpa-card.active {
+    background: var(--card2);
+    border-color: var(--border);
+  }
+  .kpa-card.active::before { opacity: 1; }
+
+  .kpa-top {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .kpa-num {
+    font-size: 10px;
+    letter-spacing: 1px;
+    color: var(--muted);
+    width: 20px;
+    flex-shrink: 0;
+  }
+  .kpa-name {
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    color: var(--white);
+    flex: 1;
+    text-transform: uppercase;
+  }
+  .kpa-tag {
+    font-size: 8px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 3px 8px;
+    border-radius: 2px;
+    background: rgba(255,255,255,.04);
+    border: 1px solid var(--border2);
+    color: var(--muted);
+    flex-shrink: 0;
+  }
+  .chevron {
+    width: 14px;
+    height: 14px;
+    color: var(--muted);
+    transition: transform 0.22s ease;
+    flex-shrink: 0;
+  }
+  .kpa-card.active .chevron { transform: rotate(180deg); }
+
+  /* DETAIL */
+  .kpa-detail {
+    display: none;
+    padding-top: 12px;
+    margin-top: 12px;
+    border-top: 1px solid var(--border2);
+    padding-left: 32px;
+  }
+  .kpa-card.active .kpa-detail { display: block; }
+  .kpa-detail p {
+    font-size: 12px;
+    font-weight: 300;
+    letter-spacing: .5px;
+    line-height: 1.85;
+    color: rgba(255,255,255,.55);
+  }
+  .kpa-detail .tip {
+    margin-top: 10px;
+    padding: 10px 14px;
+    border-radius: 4px;
+    font-size: 11px;
+    font-weight: 300;
+    font-style: italic;
+    letter-spacing: .3px;
+    line-height: 1.7;
+    color: rgba(255,255,255,.4);
+  }
+  .open-tip  { background: rgba(231,209,157,.05); border-left: 2px solid rgba(231,209,157,.25); }
+  .close-tip { background: rgba(48,88,110,.08);   border-left: 2px solid rgba(122,173,202,.25); }
+  .week-tip  { background: rgba(174,148,101,.06); border-left: 2px solid rgba(174,148,101,.25); }
+
+  /* WEEKLY CALLOUT */
+  .weekly-note {
+    margin-top: 48px;
+    padding: 28px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    position: relative;
+    overflow: hidden;
+    animation: fadeUp 0.6s 0.35s ease both;
+  }
+  .weekly-note::after {
+    content: 'ZP';
+    position: absolute;
+    bottom: -16px;
+    right: 16px;
+    font-size: 80px;
+    font-weight: 700;
+    letter-spacing: 8px;
+    color: rgba(174,148,101,.04);
+    pointer-events: none;
+  }
+  .weekly-note-label {
+    font-size: 9px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 10px;
+  }
+  .weekly-note h3 {
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--white);
+    margin-bottom: 10px;
+  }
+  .weekly-note p {
+    font-size: 12px;
+    font-weight: 300;
+    letter-spacing: .5px;
+    line-height: 1.85;
+    color: rgba(255,255,255,.45);
+  }
+
+  /* RULE BAR */
+  .rule-bar {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 48px;
+    padding: 16px 20px;
+    background: var(--black);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+  }
+  .rule-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--gold);
+    flex-shrink: 0;
+  }
+  .rule-text {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gold);
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  @media (max-width: 480px) {
+    .container { padding: 32px 16px 80px; }
+    .kpa-tag { display: none; }
+    .nav-links { display: none; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <nav class="nav">
+    <img class="nav-logo" src="ZP_1PrimaryWhite.png" alt="Zenith Performance">
+    <div class="nav-links">
+      <a href="index.html">← Dashboard</a>
+      <a href="zenith-weekly-schedule.html">Weekly Schedule</a>
+    </div>
+  </nav>
+
+  <header class="header">
+    <span class="header-label">Zenith Performance</span>
+    <h1>Daily <span>KPA</span><br>System</h1>
+    <p class="header-sub">Key Performance Actions — Open this before you start.<br>Close the loop before you finish.</p>
+    <div class="header-rule"></div>
+  </header>
+
+  <!-- OPENING DAY -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-icon icon-open">☀</div>
+      <span class="section-title title-open">Opening Day</span>
+      <span class="section-meta">~20–30 Min</span>
+    </div>
+    <div class="kpa-list">
+
+      <div class="kpa-card open-card" onclick="toggle(this)">
+        <div class="kpa-top">
+          <span class="kpa-num">01</span>
+          <span class="kpa-name">Check Google Calendar</span>
+          <span class="kpa-tag">Orient</span>
+          <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+        <div class="kpa-detail">
+          <p>Before touching anything else, know exactly what today looks like. Calls, check-ins, deadlines — orient yourself to the day's architecture first so everything else gets filtered through it.</p>
+          <div class="tip open-tip">If you find yourself context-switching mid-morning because you forgot a call, your opening routine failed. The calendar is your anchor.</div>
+        </div>
+      </div>
+
+      <div class="kpa-card open-card" onclick="toggle(this)">
+        <div class="kpa-top">
+          <span class="kpa-num">02</span>
+          <span class="kpa-name">Review Yesterday's Loose Ends</span>
+          <span class="kpa-tag">Continuity</span>
+          <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+        <div class="kpa-detail">
+          <p>Scan for anything unfinished, unanswered, or dropped from yesterday. A 2-minute scan here prevents things falling through cracks for days. Clients notice when they're forgotten — even once.</p>
+          <div class="tip open-tip">Check your notes from the previous closing day log. That's why you write them.</div>
+        </div>
+      </div>
+
+      <div class="kpa-card open-card" onclick="toggle(this)">
+        <div class="kpa-top">
+          <span class="kpa-num">03</span>
+          <span class="kpa-name">Set Your #1 Priority for the Day</span>
+          <span class="kpa-tag">Focus</span>
+          <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+        <div class="kpa-detail">
+          <p>Name the one non-negotiable outcome for today. Not a task — an outcome. "Send proposal to Jordan" not "work on proposals." Write it somewhere visible. Everything else is secondary to this.</p>
+          <div class="tip open-tip">If you get to the end of a day and this one thing got done, the day was a win regardless of what else happened.</div>
+        </div>
+      </div>
+
+      <div class="kpa-card open-card" onclick="toggle(this)">
+        <div class="kpa-top">
+          <span class="kpa-num">04</span>
+          <span class="kpa-name">Check Revenue Dashboard</span>
+          <span class="kpa-tag">Numbers</span>
+          <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+        <div class="kpa-detail">
+          <p>Know where you stand on your monthly revenue goal before the day starts. Are you ahead? Behind? This shapes your urgency. Business owners who don't look at their numbers daily drift — and wonder why they miss targets.</p>
+          <div class="tip open-tip">This should take 60 seconds. If it takes longer, your dashboard isn't set up right yet.</div>
+        </div>
+      </div>
+
+      <div class="kpa-card open-card" onclick="toggle(this)">
+        <div class="kpa-top">
+          <span class="kpa-num">05</span>
+          <span class="kpa-name">Clear Out Emails</span>
+          <span class="kpa-tag">Inbox</span>
+          <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+        <div class="kpa-detail">
+          <p>Process — don't just read. Reply, archive, or flag for follow-up. Inbox Zero isn't a myth, it's a discipline. An unprocessed email inbox is a to-do list written by everyone else.</p>
+          <div class="tip open-tip">Set a 10-min timer. If an email takes more than 2 minutes to action, flag it for a dedicated block later.</div>
+        </div>
+      </div>
+
+      <div class="kpa-card open-card" onclick="toggle(this)">
+        <div class="kpa-top">
+          <span class="kpa-num">06</span>
+          <span class="kpa-name">Clear Client Inbox</span>
+          <span class="kpa-tag">Retention</span>
+          <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+        <div class="kpa-detail">
+          <p>Your clients are paying for access and results. Response time is a form of service delivery. Clear your client communication channels first thing so no one feels ignored or deprioritized.</p>
+          <div class="tip open-tip">Same-day response to active clients is a retention superpower most coaches undervalue until they lose someone over it.</div>
+        </div>
+      </div>
+
+      <div class="kpa-card open-card" onclick="toggle(this)">
+        <div class="kpa-top">
+          <span class="kpa-num">07</span>
+          <span class="kpa-name">Check Typeform for New Applications</span>
+          <span class="kpa-tag">Pipeline</span>
+          <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+        <div class="kpa-detail">
+          <p>New applications are warm leads. The faster you follow up, the higher your close rate. Every hour you wait, their excitement cools and their options broaden. Check this daily without exception.</p>
+          <div class="tip open-tip">Speed to lead is one of the highest-leverage sales activities in your business. Treat a new application like a hand raised in a room.</div>
+        </div>
+      </div>
+
+      <div class="kpa-card open-card" onclick="toggle(this)">
+        <div class="kpa-top">
+          <span class="kpa-num">08</span>
+          <span class="kpa-name">Check Daily Programs Due</span>
+          <span class="kpa-tag">Delivery</span>
+          <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+        <div class="kpa-detail">
+          <p>Review any client programs that need updating, adjusting, or delivering today. Proactively updating programs before clients ask signals world-class coaching and builds deep trust.</p>
+          <div class="tip open-tip">Clients who feel coached — not just subscribed — stay longer and refer more. Program updates are a touch point, not just a task.</div>
+        </div>
+      </div>
+
+      <div class="kpa-card open-card" onclick="toggle(this)">
+        <div class="kpa-top">
+          <span class="kpa-num">09</span>
+          <span class="kpa-name">Review Pending Proposals & Trial Clients</span>
+          <span class="kpa-tag">Conversion</span>
+          <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+        <div class="kpa-detail">
+          <p>People on the fence need timely touches or they go cold and sign with someone else. Know exactly who is in "deciding" mode today and make deliberate contact. One follow-up can be worth thousands.</p>
+          <div class="tip open-tip">Build a simple "pending" list in your CRM. If a proposal is 3+ days old with no reply, it needs a nudge today.</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- CLOSING DAY -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-icon icon-close">◑</div>
+      <span class="section-title title-close">Closing Day</span>
+      <span class="section-meta">~20–25 Min</span>
+    </div>
+    <div class="kpa-list">
+
+      <div class="kpa-card close-card" onclick="toggle(this)">
+        <div class="kpa-top">
+          <span class="kpa-num">01</span>
+          <span class="kpa-name">Update CRM</span>
+          <span class="kpa-tag">Systems</span>
+          <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+        <div class="kpa-detail">
+          <p>Log every client interaction, sales conversation, and status change from today. Your CRM is only as powerful as its data. If it's out of date, you're flying blind.</p>
+          <div class="tip close-tip">A CRM updated daily takes 5 minutes. A CRM updated weekly takes 45 and is always missing something.</div>
+        </div>
+      </div>
+
+      <div class="kpa-card close-card" onclick="toggle(this)">
+        <div class="kpa-top">
+          <span class="kpa-num">02</span>
+          <span class="kpa-name">Update Lead Tracker</span>
+          <span class="kpa-tag">Pipeline</span>
+          <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+        <div class="kpa-detail">
+          <p>Move leads through stages, note where conversations stand, and flag anyone who needs follow-up tomorrow. Your pipeline is a living thing — leads that don't get moved forward either close or die.</p>
+          <div class="tip close-tip">If you can't tell at a glance how many leads are at each stage, your tracker isn't detailed enough.</div>
+        </div>
+      </div>
+
+      <div class="kpa-card close-card" onclick="toggle(this)">
+        <div class="kpa-top">
+          <span class="kpa-num">03</span>
+          <span class="kpa-name">Send Outstanding Follow-Ups</span>
+          <span class="kpa-tag">Sales</span>
+          <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+        <div class="kpa-detail">
+          <p>Don't let the day end with unanswered leads or promises you made verbally but haven't confirmed in writing. Follow-up is where most revenue is made and most coaches are weakest.</p>
+          <div class="tip close-tip">Most people stop at one touch. Most deals close on touch 4–7.</div>
+        </div>
+      </div>
+
+      <div class="kpa-card close-card" onclick="toggle(this)">
+        <div class="kpa-top">
+          <span class="kpa-num">04</span>
+          <span class="kpa-name">Clear IG DM Inbox</span>
+          <span class="kpa-tag">Social</span>
+          <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+        <div class="kpa-detail">
+          <p>Instagram DMs are a direct sales and retention channel. Leaving them unread signals poor responsiveness to prospects and clients alike. Batch-process them at close of day.</p>
+          <div class="tip close-tip">Every DM is a touch point. Even a quick reply keeps the relationship warm and the algorithm happy.</div>
+        </div>
+      </div>
+
+      <div class="kpa-card close-card" onclick="toggle(this)">
+        <div class="kpa-top">
+          <span class="kpa-num">05</span>
+          <span class="kpa-name">Clear Client Telegram Inbox</span>
+          <span class="kpa-tag">Retention</span>
+          <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+        <div class="kpa-detail">
+          <p>End every day with a clean Telegram inbox. Clients who message and don't hear back by end of day start to question the value of the investment. Consistency here compounds into deep loyalty.</p>
+          <div class="tip close-tip">"Got it, I'll review this tomorrow morning!" is better than silence. Acknowledgment is service.</div>
+        </div>
+      </div>
+
+      <div class="kpa-card close-card" onclick="toggle(this)">
+        <div class="kpa-top">
+          <span class="kpa-num">06</span>
+          <span class="kpa-name">Review Cash Flow & Invoices Due</span>
+          <span class="kpa-tag">Finance</span>
+          <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+        <div class="kpa-detail">
+          <p>Flag anything overdue or coming up in the next 7 days. Chasing money reactively is stressful and unprofessional. Knowing your cash position proactively means you can act, not scramble.</p>
+          <div class="tip close-tip">A failed payment left unaddressed for 48 hours is a client relationship at risk. Catch it early.</div>
+        </div>
+      </div>
+
+      <div class="kpa-card close-card" onclick="toggle(this)">
+        <div class="kpa-top">
+          <span class="kpa-num">07</span>
+          <span class="kpa-name">Log Wins & Blockers</span>
+          <span class="kpa-tag">Growth</span>
+          <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+        <div class="kpa-detail">
+          <p>Write 1–3 sentences: what moved forward today, what didn't, and why. This isn't journaling for therapy — it's an operational log. Over 90 days, patterns emerge that tell you exactly where to fix your business.</p>
+          <div class="tip close-tip">The best operators review their own logs quarterly. You'll spot recurring blockers you'd never catch in the day-to-day fog.</div>
+        </div>
+      </div>
+
+      <div class="kpa-card close-card" onclick="toggle(this)">
+        <div class="kpa-top">
+          <span class="kpa-num">08</span>
+          <span class="kpa-name">Set Tomorrow's Top 3 Priorities</span>
+          <span class="kpa-tag">Planning</span>
+          <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+        <div class="kpa-detail">
+          <p>Write three specific outcomes for tomorrow. Do this tonight so tomorrow morning you open with clarity, not chaos. Morning willpower is too valuable to spend on figuring out what to do.</p>
+          <div class="tip close-tip">Leaders who plan the next day the evening before consistently outperform those who plan in the morning.</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- WEEKLY -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-icon icon-week">◈</div>
+      <span class="section-title title-week">Weekly Zoom-Out</span>
+      <span class="section-meta">Fri or Sun · 30 Min</span>
+    </div>
+    <div class="kpa-list">
+
+      <div class="kpa-card week-card" onclick="toggle(this)">
+        <div class="kpa-top">
+          <span class="kpa-num">01</span>
+          <span class="kpa-name">Review Weekly Revenue vs Target</span>
+          <span class="kpa-tag">Numbers</span>
+          <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+        <div class="kpa-detail">
+          <p>Where did you land versus your weekly revenue target? Are you on pace for the month? Trend this weekly and you'll develop an intuition for your business that no dashboard can give you.</p>
+          <div class="tip week-tip">If you're consistently missing by 20–30%, the target isn't the problem — the activity is. Dig into which KPAs got skipped.</div>
+        </div>
+      </div>
+
+      <div class="kpa-card week-card" onclick="toggle(this)">
+        <div class="kpa-top">
+          <span class="kpa-num">02</span>
+          <span class="kpa-name">Review Client Retention & Satisfaction</span>
+          <span class="kpa-tag">Retention</span>
+          <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+        <div class="kpa-detail">
+          <p>Who's been quiet this week? Who's struggling? Who is a flight risk? Scan your active roster with fresh eyes once a week. Proactive outreach to an at-risk client costs you 10 minutes. Losing them costs months of revenue.</p>
+          <div class="tip week-tip">A client who cancels rarely gives you the real reason. Check in before they check out.</div>
+        </div>
+      </div>
+
+      <div class="kpa-card week-card" onclick="toggle(this)">
+        <div class="kpa-top">
+          <span class="kpa-num">03</span>
+          <span class="kpa-name">Review Pipeline Health</span>
+          <span class="kpa-tag">Sales</span>
+          <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+        <div class="kpa-detail">
+          <p>How many leads entered this week? How many calls booked? How many conversions? If your pipeline is thin, you have a lead generation problem. If calls aren't converting, you have a sales problem. Know which one it is.</p>
+          <div class="tip week-tip">Most coaches confuse a sales problem with a lead problem. The weekly pipeline review is how you stay clear.</div>
+        </div>
+      </div>
+
+      <div class="kpa-card week-card" onclick="toggle(this)">
+        <div class="kpa-top">
+          <span class="kpa-num">04</span>
+          <span class="kpa-name">Did Your Time Match Your Priorities?</span>
+          <span class="kpa-tag">Audit</span>
+          <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+        <div class="kpa-detail">
+          <p>Look back at where your time actually went this week versus where you intended it to go. Most business owners are busy but not productive. This question separates the two.</p>
+          <div class="tip week-tip">Busy ≠ productive. Only the weekly audit reveals the difference.</div>
+        </div>
+      </div>
+
+      <div class="kpa-card week-card" onclick="toggle(this)">
+        <div class="kpa-top">
+          <span class="kpa-num">05</span>
+          <span class="kpa-name">Identify One System to Improve</span>
+          <span class="kpa-tag">Operations</span>
+          <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+        <div class="kpa-detail">
+          <p>Every week, name one thing in your operations that was clunky, slow, or broke down. Then decide: document it, delegate it, or automate it. This is how you build a real business instead of just a job with your name on it.</p>
+          <div class="tip week-tip">One system improvement per week = 50 improvements per year. This is the difference between a $10K/mo business and a $50K/mo one.</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="weekly-note">
+    <div class="weekly-note-label">The Foundation</div>
+    <h3>The Rule That Ties It All Together</h3>
+    <p>These KPAs only work if they're non-negotiable. Not "most days." Not "when I have time." Every operator who is consistently scaling has one thing in common: they do the boring, unsexy daily work with the same intensity they bring to the big moments. The open and close routines ARE the business. Everything else is just execution.</p>
+  </div>
+
+  <div class="rule-bar">
+    <div class="rule-dot"></div>
+    <div class="rule-text">Open every day. Close every day. No exceptions.</div>
+  </div>
+
+</div>
+
+<script>
+  function toggle(card) {
+    const wasActive = card.classList.contains('active');
+    const list = card.parentElement;
+    list.querySelectorAll('.kpa-card').forEach(c => c.classList.remove('active'));
+    if (!wasActive) card.classList.add('active');
+  }
+</script>
+</body>
+</html>

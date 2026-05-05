@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Zenith Performance — Dashboard</title>
+<link rel="icon" type="image/png" href="data:image/png;base64,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">
+<link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,300;0,400;0,600;0,700;1,300&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --black:  #000000;
+    --white:  #FFFFFF;
+    --amber:  #E7D19D;
+    --gold:   #AE9465;
+    --blue:   #30586E;
+    --gray:   #5A5554;
+    --bg:     #080808;
+    --dark1:  #0d0d0d;
+    --dark2:  #141414;
+    --dark3:  #1c1c1c;
+    --dark4:  #242424;
+    --border: rgba(174,148,101,0.15);
+    --border2:rgba(255,255,255,0.06);
+    --muted:  rgba(255,255,255,0.38);
+  }
+  body {
+    font-family: 'Josefin Sans', sans-serif;
+    background: var(--black);
+    min-height: 100vh;
+    color: var(--white);
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* TOPBAR */
+  .topbar {
+    background: var(--black);
+    border-bottom: 1px solid var(--dark4);
+    padding: 1.2rem 2.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .topbar-logo { height: 40px;  }
+  .topbar-right { font-size: 10px; letter-spacing: 4px; text-transform: uppercase; color: var(--gold); }
+
+  /* HERO */
+  .hero {
+    background: var(--dark1);
+    padding: 3rem 2.5rem 2.5rem;
+    border-bottom: 1px solid var(--dark3);
+  }
+  .hero-label { font-size: 10px; letter-spacing: 5px; text-transform: uppercase; color: var(--gold); margin-bottom: .75rem; }
+  .hero-title { font-size: 52px; font-weight: 700; letter-spacing: 4px; text-transform: uppercase; line-height: 1; color: var(--white); }
+  .hero-title span { color: var(--gold); }
+  .hero-desc { font-size: 12px; font-weight: 300; color: var(--gray); margin-top: 1rem; letter-spacing: 1px; max-width: 500px; line-height: 1.8; }
+  .hero-divider { width: 60px; height: 2px; background: var(--gold); margin-top: 1.5rem; }
+
+  /* GRID */
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1px;
+    background: var(--dark3);
+    flex: 1;
+  }
+  .card {
+    background: var(--dark1);
+    padding: 2.5rem;
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    flex-direction: column;
+    gap: .6rem;
+    transition: background .2s;
+    position: relative;
+    overflow: hidden;
+  }
+  .card:hover { background: var(--dark2); }
+  .card:hover .card-arrow { transform: translateX(5px); }
+
+  .card-accent { position: absolute; top: 0; left: 0; right: 0; height: 2px; }
+  .card-tag { font-size: 9px; letter-spacing: 4px; text-transform: uppercase; color: var(--gold); margin-bottom: .25rem; }
+  .card-title { font-size: 28px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--white); line-height: 1; }
+  .card-desc { font-size: 11px; font-weight: 300; color: var(--gray); line-height: 1.8; max-width: 380px; letter-spacing: .5px; margin-top: .25rem; }
+  .card-footer { display: flex; align-items: center; justify-content: space-between; margin-top: auto; padding-top: 1.5rem; border-top: 1px solid var(--dark3); }
+  .card-status { font-size: 9px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; padding: 4px 12px; border-radius: 2px; background: rgba(48,88,110,.2); color: var(--blue); border: 1px solid rgba(48,88,110,.4); }
+  .card-arrow { font-size: 20px; color: var(--gold); transition: color .2s, transform .2s; }
+
+  /* BOTTOM BAR */
+  .bottombar {
+    background: var(--black);
+    border-top: 1px solid var(--dark3);
+    padding: .8rem 2.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .bottombar-left { font-size: 9px; letter-spacing: 2px; text-transform: uppercase; color: var(--dark4); }
+  .bottombar-right { display: flex; gap: 1.5rem; }
+  .r-item { font-size: 9px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--dark4); }
+  .r-item span { color: var(--gold); margin-right: 5px; }
+
+  @media (max-width: 600px) {
+    .grid { grid-template-columns: 1fr; }
+    .hero-title { font-size: 36px; }
+    .bottombar-right { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <img class="topbar-logo" id="topbar-logo" alt="Zenith Performance">
+  <div class="topbar-right">Command Center</div>
+</div>
+
+<div class="hero">
+  <div class="hero-label">Operating System</div>
+  <div class="hero-title">Your Week.<br><span>Your Rules.</span></div>
+  <div class="hero-desc">Everything you need to run Zenith Performance — schedule, tracking, content, and systems — all in one place.</div>
+  <div class="hero-divider"></div>
+</div>
+
+<div class="grid">
+
+  <a href="zenith-weekly-schedule.html" class="card">
+    <div class="card-accent" style="background:var(--gold)"></div>
+    <div class="card-tag">Live</div>
+    <div class="card-title">Weekly Schedule</div>
+    <div class="card-desc">Your full 7-day operating system — deep work, gym blocks, client calls, KPA open/close, DM outreach, content engine, and weekly recap.</div>
+    <div class="card-footer">
+      <span class="card-status">Active</span>
+      <span class="card-arrow">→</span>
+    </div>
+  </a>
+
+  <a href="zenith-kpa.html" class="card">
+    <div class="card-accent" style="background:var(--blue)"></div>
+    <div class="card-tag">Live</div>
+    <div class="card-title">KPA Tracker</div>
+    <div class="card-desc">Open and close your day with intention. Track key performance actions, daily notes, and hold yourself accountable to what actually moves the needle.</div>
+    <div class="card-footer">
+      <span class="card-status">Active</span>
+      <span class="card-arrow">→</span>
+    </div>
+  </a>
+
+  <a href="zenith-kpi.html" class="card">
+    <div class="card-accent" style="background:var(--amber)"></div>
+    <div class="card-tag">Live</div>
+    <div class="card-title">KPI Scorecard</div>
+    <div class="card-desc">Know if you're winning or slacking. Track wake up, training, inbox, posts, DMs, sales calls, athletes signed and more — daily log and weekly summary.</div>
+    <div class="card-footer">
+      <span class="card-status">Active</span>
+      <span class="card-arrow">→</span>
+    </div>
+  </a>
+
+  <a href="zenith-content.html" class="card">
+    <div class="card-accent" style="background:var(--gray)"></div>
+    <div class="card-tag">Live</div>
+    <div class="card-title">Content Calendar</div>
+    <div class="card-desc">Weekly theme, daily format, specific post ideas — all tracked in one place. Win Wednesday, Captain's Log, batch filming day and more, built into your rhythm.</div>
+    <div class="card-footer">
+      <span class="card-status">Active</span>
+      <span class="card-arrow">→</span>
+    </div>
+  </a>
+
+</div>
+
+<div class="bottombar">
+  <div class="bottombar-left">Zenith Performance &mdash; gfoust5</div>
+  <div class="bottombar-right">
+    <div class="r-item"><span>Mon</span>Plan</div>
+    <div class="r-item"><span>Tue</span>Serve</div>
+    <div class="r-item"><span>Wed</span>Create</div>
+    <div class="r-item"><span>Thu</span>Build</div>
+    <div class="r-item"><span>Fri</span>Sell</div>
+    <div class="r-item"><span>Sat</span>Expand</div>
+    <div class="r-item"><span>Sun</span>Deliver</div>
+  </div>
+</div>
+
+
+</body>
+</html>

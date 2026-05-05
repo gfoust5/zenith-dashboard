@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Zenith Performance — Daily KPI Scorecard</title>
+<link rel="icon" type="image/png" href="data:image/png;base64,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">
+<link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,300;0,400;0,600;0,700;1,300&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --black:   #000000;
+    --white:   #FFFFFF;
+    --amber:   #E7D19D;
+    --gold:    #AE9465;
+    --blue:    #30586E;
+    --gray:    #5A5554;
+    --bg:      #080808;
+    --card:    #131313;
+    --card2:   #181818;
+    --border:  rgba(174,148,101,0.15);
+    --border2: rgba(255,255,255,0.06);
+    --muted:   rgba(255,255,255,0.38);
+  }
+  body { background: var(--bg); color: var(--white); font-family: 'Josefin Sans', sans-serif; min-height: 100vh; }
+  .container { max-width: 920px; margin: 0 auto; padding: 40px 24px 100px; }
+
+  /* NAV */
+  .nav { display: flex; align-items: center; justify-content: space-between; margin-bottom: 40px; }
+  .nav-logo { height: 30px; opacity: .9; }
+  .nav-links { display: flex; gap: 1.5rem; }
+  .nav-links a { font-size: 9px; letter-spacing: 3px; text-transform: uppercase; color: var(--gold); text-decoration: none; opacity: .7; transition: opacity .2s; }
+  .nav-links a:hover { opacity: 1; }
+
+  /* HEADER */
+  .header { margin-bottom: 32px; animation: fadeUp .6s ease both; }
+  .header-label { font-size: 10px; letter-spacing: 5px; text-transform: uppercase; color: var(--gold); margin-bottom: 10px; display: block; }
+  .header-title { font-size: 36px; font-weight: 700; letter-spacing: 4px; text-transform: uppercase; line-height: 1; color: var(--white); }
+  .header-title span { color: var(--gold); }
+  .header-sub { font-size: 11px; font-weight: 300; letter-spacing: 1.5px; color: var(--muted); margin-top: 10px; line-height: 1.8; }
+
+  /* TABS */
+  .tabs { display: flex; gap: 2px; margin-bottom: 28px; border-bottom: 1px solid var(--border2); }
+  .tab { padding: 10px 22px; font-size: 10px; font-weight: 600; letter-spacing: 3px; text-transform: uppercase; cursor: pointer; color: var(--muted); border-bottom: 2px solid transparent; transition: all .2s; margin-bottom: -1px; }
+  .tab.active { color: var(--gold); border-bottom-color: var(--gold); }
+  .tab:hover { color: var(--white); }
+
+  /* PANELS */
+  .panel { display: none; animation: fadeUp .4s ease both; }
+  .panel.active { display: block; }
+
+  /* DATE BAR */
+  .date-bar { display: flex; align-items: center; justify-content: space-between; margin-bottom: 24px; background: var(--card); border: 1px solid var(--border2); border-radius: 6px; padding: 12px 18px; }
+  .date-nav { display: flex; align-items: center; gap: 16px; }
+  .date-btn { background: none; border: 1px solid var(--border2); color: var(--muted); width: 28px; height: 28px; border-radius: 4px; cursor: pointer; font-size: 14px; display: flex; align-items: center; justify-content: center; transition: all .2s; }
+  .date-btn:hover { border-color: var(--gold); color: var(--gold); }
+  .date-label { font-size: 13px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--white); min-width: 200px; text-align: center; }
+  .date-today { font-size: 9px; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); cursor: pointer; opacity: .7; transition: opacity .2s; background: none; border: 1px solid var(--border); padding: 4px 10px; border-radius: 3px; }
+  .date-today:hover { opacity: 1; }
+
+  /* SCORE */
+  .score-row { display: flex; align-items: center; gap: 16px; }
+  .score-label { font-size: 9px; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); }
+  .score-badge { font-size: 20px; font-weight: 700; color: var(--gold); }
+  .score-bar-wrap { width: 100px; height: 4px; background: var(--border2); border-radius: 2px; overflow: hidden; }
+  .score-bar { height: 100%; background: var(--gold); border-radius: 2px; transition: width .4s ease; }
+
+  /* KPI SECTIONS */
+  .section-title { font-size: 9px; font-weight: 600; letter-spacing: 4px; text-transform: uppercase; color: var(--gold); padding: 20px 0 10px; border-top: 1px solid var(--border2); margin-top: 8px; }
+  .section-title:first-of-type { border-top: none; margin-top: 0; padding-top: 4px; }
+
+  .kpi-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+
+  /* CHECKBOX ITEM */
+  .kpi-item { background: var(--card); border: 1px solid var(--border2); border-radius: 6px; padding: 13px 16px; display: flex; align-items: center; gap: 12px; transition: all .2s; cursor: pointer; position: relative; overflow: hidden; }
+  .kpi-item::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 2px; background: var(--gold); opacity: 0; transition: opacity .2s; }
+  .kpi-item:hover { background: var(--card2); border-color: var(--border); }
+  .kpi-item.checked { background: var(--card2); border-color: var(--border); }
+  .kpi-item.checked::before { opacity: 1; }
+
+  .kpi-check { width: 20px; height: 20px; border: 1.5px solid var(--border2); border-radius: 4px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; transition: all .2s; }
+  .kpi-item.checked .kpi-check { background: var(--gold); border-color: var(--gold); }
+  .check-icon { display: none; }
+  .kpi-item.checked .check-icon { display: block; }
+
+  .kpi-name { font-size: 11px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; color: var(--white); flex: 1; transition: color .2s; }
+  .kpi-item.checked .kpi-name { color: var(--gold); }
+
+  /* NUMBER ITEM */
+  .kpi-num-item { background: var(--card); border: 1px solid var(--border2); border-radius: 6px; padding: 13px 16px; display: flex; align-items: center; gap: 12px; transition: background .2s; position: relative; overflow: hidden; }
+  .kpi-num-item::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 2px; background: var(--blue); opacity: 0; transition: opacity .2s; }
+  .kpi-num-item:hover { background: var(--card2); }
+  .kpi-num-item.has-value::before { opacity: 1; }
+  .kpi-num-item.has-value { border-color: var(--border); background: var(--card2); }
+
+  .num-input-wrap { display: flex; align-items: center; gap: 4px; margin-left: auto; flex-shrink: 0; }
+  .kpi-number-input { background: var(--bg); border: 1px solid var(--border2); border-radius: 4px; color: var(--amber); font-family: 'Josefin Sans', sans-serif; font-size: 15px; font-weight: 700; letter-spacing: 1px; width: 58px; text-align: center; padding: 4px 6px; -moz-appearance: textfield; outline: none; transition: border-color .2s; }
+  .kpi-number-input::-webkit-outer-spin-button, .kpi-number-input::-webkit-inner-spin-button { -webkit-appearance: none; }
+  .kpi-number-input:focus { border-color: var(--gold); }
+  .kpi-unit { font-size: 8px; letter-spacing: 1px; text-transform: uppercase; color: var(--muted); }
+
+  /* NOTES */
+  .notes-wrap { margin-top: 20px; }
+  .notes-label { font-size: 9px; letter-spacing: 3px; text-transform: uppercase; color: var(--muted); margin-bottom: 8px; display: block; }
+  .notes-input { width: 100%; background: var(--card); border: 1px solid var(--border2); border-radius: 6px; color: var(--white); font-family: 'Josefin Sans', sans-serif; font-size: 12px; font-weight: 300; letter-spacing: .5px; line-height: 1.8; padding: 14px 16px; resize: vertical; min-height: 90px; outline: none; transition: border-color .2s; }
+  .notes-input::placeholder { color: var(--muted); }
+  .notes-input:focus { border-color: var(--border); }
+
+  /* SAVE BTN */
+  .save-btn { margin-top: 16px; background: var(--gold); color: var(--black); font-family: 'Josefin Sans', sans-serif; font-size: 10px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; padding: 12px 28px; border: none; border-radius: 4px; cursor: pointer; transition: all .2s; }
+  .save-btn:hover { background: var(--amber); }
+  .save-confirm { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); margin-left: 14px; opacity: 0; transition: opacity .4s; }
+  .save-confirm.show { opacity: 1; }
+
+  /* WEEKLY PANEL */
+  .week-nav { display: flex; align-items: center; justify-content: space-between; margin-bottom: 24px; background: var(--card); border: 1px solid var(--border2); border-radius: 6px; padding: 12px 18px; }
+  .week-label { font-size: 13px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--white); }
+
+  .weekly-table { width: 100%; border-collapse: collapse; font-size: 10px; }
+  .weekly-table th { font-size: 8px; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); padding: 8px 10px; text-align: left; border-bottom: 1px solid var(--border2); }
+  .weekly-table th.day-col { text-align: center; width: 56px; }
+  .weekly-table td { padding: 8px 10px; border-bottom: 1px solid rgba(255,255,255,.03); color: var(--white); font-weight: 400; letter-spacing: .5px; font-size: 10px; }
+  .weekly-table td.day-val { text-align: center; }
+  .weekly-table tr:hover td { background: var(--card2); }
+  .check-yes { color: var(--gold); font-size: 12px; }
+  .check-no { color: var(--border2); font-size: 12px; }
+  .num-val { color: var(--amber); font-weight: 600; }
+
+  .week-score-row { display: flex; gap: 12px; margin-bottom: 20px; flex-wrap: wrap; }
+  .week-score-card { background: var(--card); border: 1px solid var(--border2); border-radius: 6px; padding: 14px 18px; flex: 1; min-width: 100px; }
+  .wsc-label { font-size: 8px; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); margin-bottom: 6px; }
+  .wsc-val { font-size: 22px; font-weight: 700; color: var(--gold); }
+  .wsc-sub { font-size: 9px; color: var(--muted); margin-top: 2px; letter-spacing: 1px; }
+
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: translateY(0); } }
+
+  @media (max-width: 600px) {
+    .kpi-grid { grid-template-columns: 1fr; }
+    .nav-links { display: none; }
+    .weekly-table th.day-col, .weekly-table td.day-val { display: none; }
+    .weekly-table th.day-col:last-child, .weekly-table td.day-val:last-child { display: table-cell; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <nav class="nav">
+    <img class="nav-logo" id="nav-logo" alt="Zenith Performance">
+    <div class="nav-links">
+      <a href="index.html">← Dashboard</a>
+      <a href="zenith-weekly-schedule.html">Weekly Schedule</a>
+      <a href="zenith-kpa.html">KPA Tracker</a>
+    </div>
+  </nav>
+
+  <div class="header">
+    <span class="header-label">Zenith Performance</span>
+    <div class="header-title">Daily <span>KPI</span> Scorecard</div>
+    <p class="header-sub">Track what matters. Know if you're winning. Every day.</p>
+  </div>
+
+  <div class="tabs">
+    <div class="tab active" onclick="switchTab('daily')">Daily Log</div>
+    <div class="tab" onclick="switchTab('weekly')">Weekly Summary</div>
+  </div>
+
+  <!-- DAILY PANEL -->
+  <div class="panel active" id="panel-daily">
+
+    <div class="date-bar">
+      <div class="date-nav">
+        <button class="date-btn" onclick="changeDay(-1)">&#8592;</button>
+        <div class="date-label" id="date-label">—</div>
+        <button class="date-btn" onclick="changeDay(1)">&#8594;</button>
+      </div>
+      <div class="score-row">
+        <span class="score-label">Score</span>
+        <span class="score-badge" id="score-badge">0/9</span>
+        <div class="score-bar-wrap"><div class="score-bar" id="score-bar" style="width:0%"></div></div>
+        <button class="date-today" onclick="goToday()">Today</button>
+      </div>
+    </div>
+
+    <!-- LIFESTYLE -->
+    <div class="section-title">Lifestyle & Discipline</div>
+    <div class="kpi-grid">
+      <div class="kpi-item" id="chk-wake" onclick="toggleCheck('wake')">
+        <div class="kpi-check">
+          <svg class="check-icon" width="11" height="9" viewBox="0 0 11 9" fill="none"><polyline points="1,4.5 4,7.5 10,1" stroke="#000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <span class="kpi-name">Wake Up On Time</span>
+      </div>
+      <div class="kpi-item" id="chk-bed" onclick="toggleCheck('bed')">
+        <div class="kpi-check">
+          <svg class="check-icon" width="11" height="9" viewBox="0 0 11 9" fill="none"><polyline points="1,4.5 4,7.5 10,1" stroke="#000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <span class="kpi-name">Bedtime Followed</span>
+      </div>
+      <div class="kpi-item" id="chk-calendar" onclick="toggleCheck('calendar')">
+        <div class="kpi-check">
+          <svg class="check-icon" width="11" height="9" viewBox="0 0 11 9" fill="none"><polyline points="1,4.5 4,7.5 10,1" stroke="#000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <span class="kpi-name">Calendar Followed</span>
+      </div>
+      <div class="kpi-item" id="chk-training" onclick="toggleCheck('training')">
+        <div class="kpi-check">
+          <svg class="check-icon" width="11" height="9" viewBox="0 0 11 9" fill="none"><polyline points="1,4.5 4,7.5 10,1" stroke="#000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <span class="kpi-name">Training Finished</span>
+      </div>
+    </div>
+
+    <!-- CLIENT & COACHING -->
+    <div class="section-title">Client & Coaching</div>
+    <div class="kpi-grid">
+      <div class="kpi-item" id="chk-inbox" onclick="toggleCheck('inbox')">
+        <div class="kpi-check">
+          <svg class="check-icon" width="11" height="9" viewBox="0 0 11 9" fill="none"><polyline points="1,4.5 4,7.5 10,1" stroke="#000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <span class="kpi-name">Client Inbox Cleared</span>
+      </div>
+      <div class="kpi-item" id="chk-programs" onclick="toggleCheck('programs')">
+        <div class="kpi-check">
+          <svg class="check-icon" width="11" height="9" viewBox="0 0 11 9" fill="none"><polyline points="1,4.5 4,7.5 10,1" stroke="#000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <span class="kpi-name">Programs Up To Date</span>
+      </div>
+      <div class="kpi-item" id="chk-mentorship" onclick="toggleCheck('mentorship')">
+        <div class="kpi-check">
+          <svg class="check-icon" width="11" height="9" viewBox="0 0 11 9" fill="none"><polyline points="1,4.5 4,7.5 10,1" stroke="#000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <span class="kpi-name">Mentorship Call Attended</span>
+      </div>
+      <div class="kpi-num-item" id="num-salescalls">
+        <span class="kpi-name" style="cursor:default">Sales Calls Had</span>
+        <div class="num-input-wrap">
+          <input class="kpi-number-input" type="number" min="0" id="inp-salescalls" value="0" oninput="saveNum('salescalls')" onfocus="this.select()">
+          <span class="kpi-unit">calls</span>
+        </div>
+      </div>
+      <div class="kpi-num-item" id="num-signed">
+        <span class="kpi-name" style="cursor:default">Athletes Signed</span>
+        <div class="num-input-wrap">
+          <input class="kpi-number-input" type="number" min="0" id="inp-signed" value="0" oninput="saveNum('signed')" onfocus="this.select()">
+          <span class="kpi-unit">new</span>
+        </div>
+      </div>
+      <div class="kpi-num-item" id="num-left">
+        <span class="kpi-name" style="cursor:default">Athletes Left</span>
+        <div class="num-input-wrap">
+          <input class="kpi-number-input" type="number" min="0" id="inp-left" value="0" oninput="saveNum('left')" onfocus="this.select()">
+          <span class="kpi-unit">lost</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- CONTENT & GROWTH -->
+    <div class="section-title">Content & Growth</div>
+    <div class="kpi-grid">
+      <div class="kpi-num-item" id="num-stories">
+        <span class="kpi-name" style="cursor:default">Stories Posted</span>
+        <div class="num-input-wrap">
+          <input class="kpi-number-input" type="number" min="0" id="inp-stories" value="0" oninput="saveNum('stories')" onfocus="this.select()">
+          <span class="kpi-unit">stories</span>
+        </div>
+      </div>
+      <div class="kpi-num-item" id="num-posts">
+        <span class="kpi-name" style="cursor:default">Posts Made</span>
+        <div class="num-input-wrap">
+          <input class="kpi-number-input" type="number" min="0" id="inp-posts" value="0" oninput="saveNum('posts')" onfocus="this.select()">
+          <span class="kpi-unit">posts</span>
+        </div>
+      </div>
+      <div class="kpi-num-item" id="num-dms">
+        <span class="kpi-name" style="cursor:default">DMs Sent</span>
+        <div class="num-input-wrap">
+          <input class="kpi-number-input" type="number" min="0" id="inp-dms" value="0" oninput="saveNum('dms')" onfocus="this.select()">
+          <span class="kpi-unit">sent</span>
+        </div>
+      </div>
+      <div class="kpi-num-item" id="num-education">
+        <span class="kpi-name" style="cursor:default">Education</span>
+        <div class="num-input-wrap">
+          <input class="kpi-number-input" type="number" min="0" id="inp-education" value="0" oninput="saveNum('education')" onfocus="this.select()">
+          <span class="kpi-unit">min</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- NOTES -->
+    <div class="notes-wrap">
+      <span class="notes-label">Daily Notes</span>
+      <textarea class="notes-input" id="daily-notes" placeholder="Wins, blockers, observations for today..." oninput="saveNotes()"></textarea>
+    </div>
+
+    <div style="display:flex;align-items:center;margin-top:16px">
+      <button class="save-btn" onclick="forceSave()">Save Day</button>
+      <span class="save-confirm" id="save-confirm">Saved ✓</span>
+    </div>
+
+  </div>
+
+  <!-- WEEKLY PANEL -->
+  <div class="panel" id="panel-weekly">
+
+    <div class="week-nav">
+      <button class="date-btn" onclick="changeWeek(-1)">&#8592;</button>
+      <span class="week-label" id="week-label">—</span>
+      <button class="date-btn" onclick="changeWeek(1)">&#8594;</button>
+    </div>
+
+    <div class="week-score-row" id="week-score-row"></div>
+
+    <table class="weekly-table" id="weekly-table">
+      <thead id="weekly-thead"></thead>
+      <tbody id="weekly-tbody"></tbody>
+    </table>
+
+  </div>
+
+</div>
+
+<script>
+// ── DATA ──────────────────────────────────────────────
+const CHECKS = [
+  { id: 'wake',       label: 'Wake Up On Time' },
+  { id: 'bed',        label: 'Bedtime Followed' },
+  { id: 'calendar',   label: 'Calendar Followed' },
+  { id: 'training',   label: 'Training Finished' },
+  { id: 'inbox',      label: 'Client Inbox Cleared' },
+  { id: 'programs',   label: 'Programs Up To Date' },
+  { id: 'mentorship', label: 'Mentorship Call' },
+
+
+];
+const NUMS = [
+  { id: 'salescalls', label: 'Sales Calls',    unit: 'calls' },
+  { id: 'signed',     label: 'Athletes Signed', unit: 'new'  },
+  { id: 'left',       label: 'Athletes Left',   unit: 'lost' },
+  { id: 'dms',        label: 'DMs Sent',        unit: 'sent' },
+  { id: 'education',  label: 'Education',       unit: 'min'  },
+  { id: 'stories',    label: 'Stories Posted',  unit: 'stories' },
+  { id: 'posts',      label: 'Posts Made',       unit: 'posts' },
+];
+
+// ── STATE ─────────────────────────────────────────────
+let currentDate = todayKey();
+let currentWeekOffset = 0;
+
+function todayKey() {
+  const d = new Date();
+  return d.toISOString().slice(0,10);
+}
+
+function dateKey(offset) {
+  const d = new Date();
+  d.setDate(d.getDate() + offset);
+  return d.toISOString().slice(0,10);
+}
+
+function keyFromDate(d) { return d.toISOString().slice(0,10); }
+
+function getDay(key) {
+  try { return JSON.parse(localStorage.getItem('zp_kpi_' + key)) || {}; } catch { return {}; }
+}
+
+function saveDay(key, data) {
+  localStorage.setItem('zp_kpi_' + key, JSON.stringify(data));
+}
+
+// ── DAILY ─────────────────────────────────────────────
+function loadDay(key) {
+  const data = getDay(key);
+  // Checkboxes
+  CHECKS.forEach(c => {
+    const el = document.getElementById('chk-' + c.id);
+    if (data[c.id]) el.classList.add('checked'); else el.classList.remove('checked');
+  });
+  // Numbers
+  NUMS.forEach(n => {
+    const inp = document.getElementById('inp-' + n.id);
+    inp.value = data[n.id] || 0;
+    updateNumStyle(n.id);
+  });
+  // Notes
+  document.getElementById('daily-notes').value = data.notes || '';
+  // Date label
+  const d = new Date(key + 'T12:00:00');
+  document.getElementById('date-label').textContent = d.toLocaleDateString('en-US', { weekday:'long', month:'long', day:'numeric' });
+  updateScore();
+}
+
+function toggleCheck(id) {
+  const el = document.getElementById('chk-' + id);
+  el.classList.toggle('checked');
+  autosave();
+  updateScore();
+}
+
+function saveNum(id) {
+  updateNumStyle(id);
+  autosave();
+}
+
+function updateNumStyle(id) {
+  const inp = document.getElementById('inp-' + id);
+  const wrap = document.getElementById('num-' + id);
+  if (parseInt(inp.value) > 0) wrap.classList.add('has-value');
+  else wrap.classList.remove('has-value');
+}
+
+function saveNotes() { autosave(); }
+
+function autosave() {
+  const data = {};
+  CHECKS.forEach(c => { data[c.id] = document.getElementById('chk-' + c.id).classList.contains('checked'); });
+  NUMS.forEach(n => { data[n.id] = parseInt(document.getElementById('inp-' + n.id).value) || 0; });
+  data.notes = document.getElementById('daily-notes').value;
+  saveDay(currentDate, data);
+}
+
+function forceSave() {
+  autosave();
+  const el = document.getElementById('save-confirm');
+  el.classList.add('show');
+  setTimeout(() => el.classList.remove('show'), 2000);
+}
+
+function updateScore() {
+  const total = CHECKS.length;
+  const done = CHECKS.filter(c => document.getElementById('chk-' + c.id).classList.contains('checked')).length;
+  document.getElementById('score-badge').textContent = done + '/' + total;
+  document.getElementById('score-bar').style.width = (done/total*100) + '%';
+  const colors = ['#5A5554','#5A5554','#AE9465','#AE9465','#AE9465','#E7D19D','#E7D19D','#E7D19D','#FFFFFF'];
+  document.getElementById('score-bar').style.background = colors[done] || '#AE9465';
+}
+
+function changeDay(dir) {
+  const d = new Date(currentDate + 'T12:00:00');
+  d.setDate(d.getDate() + dir);
+  currentDate = keyFromDate(d);
+  loadDay(currentDate);
+}
+
+function goToday() {
+  currentDate = todayKey();
+  loadDay(currentDate);
+}
+
+// ── WEEKLY ────────────────────────────────────────────
+function getWeekDays(offset) {
+  const today = new Date();
+  const dow = today.getDay();
+  const monday = new Date(today);
+  monday.setDate(today.getDate() - (dow === 0 ? 6 : dow - 1) + offset * 7);
+  const days = [];
+  for (let i = 0; i < 7; i++) {
+    const d = new Date(monday);
+    d.setDate(monday.getDate() + i);
+    days.push(d);
+  }
+  return days;
+}
+
+function renderWeekly() {
+  const days = getWeekDays(currentWeekOffset);
+  const dayNames = ['Mon','Tue','Wed','Thu','Fri','Sat','Sun'];
+
+  // Week label
+  const start = days[0].toLocaleDateString('en-US',{month:'short',day:'numeric'});
+  const end = days[6].toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric'});
+  document.getElementById('week-label').textContent = start + ' — ' + end;
+
+  // Summary cards
+  let totalChecks = 0, possibleChecks = 0, totalSigned = 0, totalLeft = 0, totalDMs = 0, totalSales = 0;
+  days.forEach(d => {
+    const data = getDay(keyFromDate(d));
+    CHECKS.forEach(c => { possibleChecks++; if (data[c.id]) totalChecks++; });
+    totalSigned += data.signed || 0;
+    totalLeft   += data.left   || 0;
+    totalDMs    += data.dms    || 0;
+    totalSales  += data.salescalls || 0;
+  });
+
+  const pct = possibleChecks ? Math.round(totalChecks / possibleChecks * 100) : 0;
+  document.getElementById('week-score-row').innerHTML = `
+    <div class="week-score-card"><div class="wsc-label">Week Score</div><div class="wsc-val">${pct}%</div><div class="wsc-sub">${totalChecks} / ${possibleChecks} checks</div></div>
+    <div class="week-score-card"><div class="wsc-label">Athletes Signed</div><div class="wsc-val">${totalSigned}</div><div class="wsc-sub">this week</div></div>
+    <div class="week-score-card"><div class="wsc-label">Athletes Lost</div><div class="wsc-val">${totalLeft}</div><div class="wsc-sub">this week</div></div>
+    <div class="week-score-card"><div class="wsc-label">DMs Sent</div><div class="wsc-val">${totalDMs}</div><div class="wsc-sub">this week</div></div>
+    <div class="week-score-card"><div class="wsc-label">Sales Calls</div><div class="wsc-val">${totalSales}</div><div class="wsc-sub">this week</div></div>
+  `;
+
+  // Table header
+  const thead = document.getElementById('weekly-thead');
+  thead.innerHTML = '<tr><th>KPI</th>' + days.map((d,i) => `<th class="day-col">${dayNames[i]}<br><span style="font-weight:300;opacity:.5">${d.getDate()}</span></th>`).join('') + '</tr>';
+
+  // Table body
+  const tbody = document.getElementById('weekly-tbody');
+  let rows = '';
+
+  // Section header rows
+  rows += `<tr><td colspan="8" style="padding:14px 10px 6px;font-size:8px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);border-bottom:1px solid var(--border2)">Lifestyle & Discipline</td></tr>`;
+
+  const checkRows = ['wake','bed','calendar','training','inbox','programs','mentorship'];
+  const checkLabels = {'wake':'Wake Up On Time','bed':'Bedtime Followed','calendar':'Calendar Followed','training':'Training Finished','inbox':'Client Inbox Cleared','programs':'Programs Up To Date','mentorship':'Mentorship Call',};
+  const sections = {
+    'inbox': 'Client & Coaching',
+    'stories': 'Content & Growth'
+  };
+
+  checkRows.forEach(id => {
+    if (sections[id]) {
+      rows += `<tr><td colspan="8" style="padding:14px 10px 6px;font-size:8px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);border-bottom:1px solid var(--border2)">${sections[id]}</td></tr>`;
+    }
+    rows += '<tr><td>' + checkLabels[id] + '</td>';
+    days.forEach(d => {
+      const data = getDay(keyFromDate(d));
+      rows += `<td class="day-val">${data[id] ? '<span class="check-yes">✓</span>' : '<span class="check-no">·</span>'}</td>`;
+    });
+    rows += '</tr>';
+  });
+
+  // Number rows
+  rows += `<tr><td colspan="8" style="padding:14px 10px 6px;font-size:8px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);border-bottom:1px solid var(--border2)">Numbers</td></tr>`;
+  NUMS.forEach(n => {
+    rows += `<tr><td>${n.label}</td>`;
+    days.forEach(d => {
+      const data = getDay(keyFromDate(d));
+      const val = data[n.id] || 0;
+      rows += `<td class="day-val"><span class="${val > 0 ? 'num-val' : ''}">${val > 0 ? val : '·'}</span></td>`;
+    });
+    rows += '</tr>';
+  });
+
+  tbody.innerHTML = rows;
+}
+
+function changeWeek(dir) {
+  currentWeekOffset += dir;
+  renderWeekly();
+}
+
+// ── TABS ──────────────────────────────────────────────
+function switchTab(tab) {
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+  if (tab === 'daily') {
+    document.querySelectorAll('.tab')[0].classList.add('active');
+    document.getElementById('panel-daily').classList.add('active');
+  } else {
+    document.querySelectorAll('.tab')[1].classList.add('active');
+    document.getElementById('panel-weekly').classList.add('active');
+    renderWeekly();
+  }
+}
+
+// ── INIT ──────────────────────────────────────────────
+window.onload = function() {
+  // Inject logo
+  document.getElementById('nav-logo').src = 'ZP_3LogoMarkWhite.png';
+  loadDay(currentDate);
+};
+</script>
+</body>
+</html>
